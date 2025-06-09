@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "236306117654",
+    "project_id": "ssnap-service",
+    "storage_bucket": "ssnap-service.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:236306117654:android:93359530a499db69763137",
+        "android_client_info": {
+          "package_name": "com.ssnapservice.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAadqAwPDhivfqd7CF99wZhxRmiuqTs7NQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
