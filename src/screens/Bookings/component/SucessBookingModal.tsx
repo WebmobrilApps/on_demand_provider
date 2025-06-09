@@ -10,12 +10,12 @@ import RouteName from '../../../navigation/RouteName';
 type SucessBookingModalProps = {
     modalVisible: boolean;
     closeModal: () => void;
-    submitButton: () => void;
+    submitButton?: () => void;
 };
 const SucessBookingModal: React.FC<SucessBookingModalProps> = ({
     modalVisible = true,
     closeModal,
-    submitButton
+    submitButton=()=>{}
 }) => {
     const navigation = useNavigation<any>();
     return (
@@ -62,7 +62,8 @@ const SucessBookingModal: React.FC<SucessBookingModalProps> = ({
                     <Spacing space={SH(70)} />
                     <Buttons
                         onPress={() => {
-                            submitButton()
+                            submitButton();
+                            closeModal();
                         }}
                         title='View Booking'
                     />

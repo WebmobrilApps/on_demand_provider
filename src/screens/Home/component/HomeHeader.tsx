@@ -5,12 +5,14 @@ import imagePaths from "../../../assets/images";
 import { Colors, Fonts, SF, SH, SW } from "../../../utils";
 import RouteName from "../../../navigation/RouteName";
 import { navigate } from "../../../services/NavigationService";
+import { useNavigation } from "@react-navigation/native";
 
 interface HomeHeaderProps {
     data?: any
 }
 
 const HomeHeader: FC<HomeHeaderProps> = ({ data }) => {
+    const navigation = useNavigation<any>();
     return (
         <View style={styles.container}>
             <View style={styles.headerRow}>
@@ -26,7 +28,7 @@ const HomeHeader: FC<HomeHeaderProps> = ({ data }) => {
                     <TouchableOpacity 
                         style={styles.iconButton} 
                         onPress={() => {
-                            // navigation.navigate(RouteName.NOTIFICATION)
+                            navigation.navigate(RouteName.NOTIFICATION)
                         }}
                     >
                         <Image source={imagePaths.notification_icon} style={styles.icon} />

@@ -32,7 +32,7 @@ const HomeScreen = () => {
                             marginHori={0}
                             rightText="View All"
                             leftText="Services"
-                            onClick={() => { navigation.navigate(RouteName.SERVICE_LIST) }}
+                            onClick={() => { navigation.navigate(RouteName.SERVICE_MANAG),{title:''} }}
                         />
                         <Spacing space={SH(15)} />
                         <FlatList

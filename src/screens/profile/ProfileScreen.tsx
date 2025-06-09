@@ -100,7 +100,7 @@ const ProfileScreen: React.FC<ProfileProps> = ({ }) => {
         navigation.navigate(RouteName.NOTIFICATION_ALERT);
       },
     },
-    { name: t('profile.customerSupport'), id: 9, onClick: () => { } },
+       { name: t('profile.customerSupport'), id: 9, onClick: () => { navigation.navigate(RouteName.CUSTOMER_SUPPORT); } },
     { name: t('profile.logout'), id: 10, onClick: () => { setLogoutPopup(true) } },
   ];
 

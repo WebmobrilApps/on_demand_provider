@@ -41,5 +41,6 @@ const RouteName = {
     SHARE_PROFILE: 'ShareProfile',
     ADD_OTHER_PERSON_DETAIL: 'AddOtherPersonDetail',
     PAYMENT_SCREEN: 'PaymentScreen',
+    CUSTOMER_SUPPORT:'CustomerSupport',
 };
 export default RouteName;

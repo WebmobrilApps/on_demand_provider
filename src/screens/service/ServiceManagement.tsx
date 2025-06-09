@@ -68,7 +68,6 @@ const nearByData: NearByItem[] = [
 const ServiceManagement: React.FC = () => {
     const navigation = useNavigation<any>();
     const route = useRoute<any>();
-    const { title, type } = route.params;
 
     const renderItem = ({ item }: { item: NearByItem }) => {
         return (
@@ -94,7 +93,7 @@ const ServiceManagement: React.FC = () => {
     return (
         <Container statusBarColor={Colors.white}>
             <AppHeader
-                headerTitle={title}
+                headerTitle={'Service Management'}
                 onPress={() => navigation.canGoBack() && navigation.goBack()}
                 Iconname="arrowleft"
                 rightIcon={true}
@@ -106,7 +105,7 @@ const ServiceManagement: React.FC = () => {
             <FlatList
                 data={nearByData}
                 renderItem={renderItem}
-                keyExtractor={item => 'ServiceManagement' + item.id.toString() + title}
+                keyExtractor={item => 'ServiceManagement' + item.id.toString() + 'service'}
                 numColumns={2}
                 contentContainerStyle={styles.listContainer}
                 columnWrapperStyle={styles.row}

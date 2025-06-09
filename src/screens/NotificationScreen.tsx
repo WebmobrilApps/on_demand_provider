@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { View, Text, FlatList, Image, StyleSheet, SectionList } from 'react-native';
+import { View, Text, Image, StyleSheet, SectionList } from 'react-native';
 import { Colors, Fonts, SH, SW, SF } from '../utils';
 import imagePaths from '../assets/images';
 import { AppHeader, Container } from '../component';
@@ -140,7 +140,7 @@ const NotificationScreen: FC<NotificationScreenProps> = () => {
     return (
         <Container style={styles.container}>
             <AppHeader
-                headerTitle={'Notification'}
+                headerTitle={'Notifications'}
                 onPress={() => {
                     navigation.goBack();
                 }}
@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: Colors.white,
         paddingHorizontal: SW(20),
-        paddingTop: SH(20),
+        paddingTop: SH(0),
     },
     headerTitle: {
         fontSize: SF(24),
