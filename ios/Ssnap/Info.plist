@@ -41,8 +41,16 @@
 			</dict>
 		</dict>
 	</dict>
+	 
+	<key>NSCameraUsageDescription</key>
+	<string>Ssnap Pro would like to access your Camera for App Profile Photo Uploading. Your photos won’t be shared without your permission. It is safe and secure.</string>
+ 
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string/>
+	<string>Ssnap Pro would like to access your location while using the app for personalized services.</string>
+	<!-- <key>NSMicrophoneUsageDescription</key>
+	<string>Ssnap Pro needs access to your microphone for audio recording. Your recordings will not be shared without your permission.</string> -->
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Ssnap Pro would like to access your photo library for App Profile Photo Uploading. Your photos won't be shared without your permission. It is safe and secure.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Inter-Bold.ttf</string>

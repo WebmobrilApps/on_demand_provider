@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { Container, ImageLoader, Spacing, VectoreIcons } from '../../component'; // Assumes you have a Container component
+import { AppText, Container, ImageLoader, InputField, Spacing, VectoreIcons } from '../../component'; // Assumes you have a Container component
 import { chatMenuData, Colors, Fonts, imagePaths, messagesData, SF, SH, SW } from '../../utils'; // Update paths if needed
 import ChatDropdownMenu from './component/ChatDropdownMenu';
 
@@ -63,8 +63,8 @@ const ChatHeader = ({ closeMenu, openMenu, isOpenMenu }: any) => {
           />
         </View>
         <View style={styles.nameContainer}>
-          <Text style={styles.userName}>WM Berber</Text>
-          <Text style={styles.lastSeen}>Last seen 5 min ago</Text>
+          <AppText style={styles.userName}>WM Berber</AppText>
+          <AppText style={styles.lastSeen}>Last seen 5 min ago</AppText>
         </View>
       </View>
 
@@ -128,24 +128,24 @@ const ChatScreen: React.FC = () => {
     const isMe = item.user._id === currentUser._id;
     return (
       <View style={[styles.messageRow, isMe ? styles.rightAlign : styles.leftAlign]}>
-       
+
         <View style={[styles.messageBubble, isMe ? styles.bubbleRight : styles.bubbleLeft]}>
-          <Text style={[styles.messageText]}>{item.text}</Text>
+          <AppText style={[styles.messageText]}>{item.text}</AppText>
         </View>
-        <Text style={styles.timeText}>
+        <AppText style={styles.timeText}>
           {new Date(item.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-        </Text>
+        </AppText>
       </View>
     );
   };
 
   return (
     <Container>
-       {isOpenMenu && (
+      {isOpenMenu && (
         <TouchableOpacity style={styles.overlay} activeOpacity={1} onPress={closeMenu} />
       )}
       <ChatHeader isOpenMenu={isOpenMenu} closeMenu={closeMenu} openMenu={() => setIsOpenMenu(true)} />
- 
+
       <KeyboardAvoidingView
         style={{ flex: 1 }}
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -163,6 +163,7 @@ const ChatScreen: React.FC = () => {
 
         <View style={styles.inputContainer}>
           <TextInput
+            allowFontScaling={false}
             value={input}
             onChangeText={setInput}
             placeholder="Type a message..."

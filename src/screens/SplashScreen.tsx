@@ -1,6 +1,6 @@
 import { Alert, Image, StatusBar, StyleSheet, Text, View } from 'react-native';
 import React, { useEffect } from 'react';
-import { Container } from '../component';
+import { AppText, Container } from '../component';
 import imagePaths from '../assets/images';
 import { Colors, Fonts, SF, SH } from '../utils';
 import LinearGradient from 'react-native-linear-gradient';
@@ -77,12 +77,12 @@ const SplashScreen: React.FC = () => {
         style={styles.linearGradient}
         colors={[Colors.themeDarkColor, Colors.themeColor]}>
         <Image
-          source={imagePaths.app_icon}
+          source={imagePaths.splash_logo}
           resizeMode="contain"
           style={styles.logo}
         />
-        <Text style={styles.appTitle}>Ssnap</Text>
-        <Text style={styles.subtitle}>All in One Service App</Text>
+        {/* <AppText style={styles.appTitle}>Ssnap</AppText>
+        <AppText style={styles.subtitle}>All in One Service App</AppText> */}
       </LinearGradient>
     </Container>
   );
@@ -97,8 +97,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   logo: {
-    height: SH(180),
-    width: SH(180),
+    height: SF(246),
+    width: SF(196),
   },
   appTitle: {
     fontFamily: Fonts.EXTRA_BOLD,

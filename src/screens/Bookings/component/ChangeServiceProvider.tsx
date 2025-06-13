@@ -1,7 +1,7 @@
 import React from 'react';
 import { Modal, StyleSheet, Text, TouchableOpacity, View, FlatList } from 'react-native';
 import { Colors, Fonts, SF, SH, SW } from '../../../utils';
-import { Buttons, Divider, Spacing, UserprofileView, VectoreIcons } from '../../../component';
+import { AppText, Buttons, Divider, Spacing, UserprofileView, VectoreIcons } from '../../../component';
 import { useNavigation } from '@react-navigation/native';
 import imagePaths from '../../../assets/images';
 
@@ -28,8 +28,8 @@ const ServiceProviderItem: React.FC<ServiceProviderItemProps> = ({ image, name, 
       <Spacing space={SW(7)} horizontal />
       <UserprofileView imageSource={image} height={SF(67)} width={SF(67)} />
       <View style={styles.textContainer}>
-        <Text style={styles.nameText}>{name}</Text>
-        <Text style={styles.jobText}>{job}</Text>
+        <AppText style={styles.nameText}>{name}</AppText>
+        <AppText style={styles.jobText}>{job}</AppText>
       </View>
     </TouchableOpacity>
     <Divider color='#DCDCDC' contStyle={{ marginTop: SH(10), marginBottom: SH(8) }} />

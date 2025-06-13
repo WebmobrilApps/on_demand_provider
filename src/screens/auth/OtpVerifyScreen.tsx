@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, Keyboard, StyleSheet, Text, View } from 'react-native';
 import { Colors, Fonts, SF, SH, SW, useCountdown, useProfileUpdate } from '../../utils';
-import { AuthBottomContainer, AuthImgComp, Container, showAppToast, Spacing } from '../../component';
+import { AppText, AuthBottomContainer, AuthImgComp, Container, showAppToast, Spacing } from '../../component';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import imagePaths from '../../assets/images';
 import Buttons from '../../component/Button';
@@ -69,7 +69,15 @@ const OtpVerifyScreen: React.FC<OtpVerifyScreenProps> = () => {
   };
 
   const btnVerifyOtp = async () => {
-    navigation.navigate(RouteName.PROFILE_SETUP)
+    if (fromScreen === 'signup') {
+      // CustomToast({ message: 'Success', description: response.ResponseMessage, position: 'top', type: 'success' });
+      dispatch(setToken({ token: 'response.ResponseBody.token' }));
+      navigation.navigate(RouteName.PROFILE_SETUP);
+    }
+    if (fromScreen === 'forgotpass') {
+      // CustomToast({ message: 'Success', description: response.ResponseMessage, position: 'top', type: 'success' });
+      navigation.navigate(RouteName.PASS_UPDATE, { userToken: 'response.ResponseBody.token' });
+    }
     return false
     if (!otp) {
       // CustomToast({ message: 'Error', description: 'Please Enter OTP', position: 'top', type: 'danger' });
@@ -121,8 +129,8 @@ const OtpVerifyScreen: React.FC<OtpVerifyScreenProps> = () => {
         <AuthBottomContainer>
           <View style={styles.bottomInnerContainer}>
             <View>
-              <Text style={styles.heading}> {t('otpverify.title')}</Text>
-              <Text style={styles.subtitile}>{t('otpverify.subtitle')}</Text>
+              <AppText style={styles.heading}> {t('otpverify.title')}</AppText>
+              <AppText style={styles.subtitile}>{t('otpverify.subtitle')}</AppText>
 
               <OTPTextView
                 ref={input}
@@ -138,17 +146,18 @@ const OtpVerifyScreen: React.FC<OtpVerifyScreenProps> = () => {
 
               <View
                 style={styles.resteTextCont}>
-                {otpLoader ? (
+                {/* {otpLoader ? (
                   <ActivityIndicator color={'#ffffff'} style={styles.activeIndigator} />
-                ) : (
-                  <Text
+                ) : ( */}
+                  <AppText
                     onPress={() => {
                       status !== 'running' && btnResendOtp();
                     }}
                     style={styles.resteText}>
-                    {status === 'running' ? formatTime(time) : 'Resend OTP'}
-                  </Text>
-                )}
+                    {/* {status === 'running' ? formatTime(time) : 'Resend OTP'} */}
+                    {'Resend OTP'}
+                  </AppText>
+                {/* )} */}
               </View>
             </View>
 
@@ -219,7 +228,7 @@ const styles = StyleSheet.create({
     fontSize: SF(14),
     textAlign: 'right',
     marginTop: 8,
-    color:Colors.textWhite
+    color: Colors.textWhite
   },
   activeIndigator: { marginTop: 8 },
 });

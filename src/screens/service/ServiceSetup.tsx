@@ -2,7 +2,7 @@ import { Image, Keyboard, StyleSheet, Text, View } from 'react-native'
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import { AppHeader, Buttons, Checkbox, Container, DropdownComponent, InputField, Spacing } from '../../component';
+import { AppHeader, AppText, Buttons, Checkbox, Container, DropdownComponent, InputField, Spacing } from '../../component';
 import { Colors, Fonts, imagePaths, SF, SH, SW } from '../../utils';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import LabelBar from './component/LabelBar';
@@ -73,12 +73,12 @@ const ServiceSetup = () => {
                 keyboardShouldPersistTaps="handled"
                 resetScrollToCoords={{ x: 0, y: 0 }}
             >
-                <Text style={styles.galleryText}>Gallery</Text>
+                <AppText style={styles.galleryText}>Gallery</AppText>
                 <View style={styles.galleryWrapper}>
                     {imgArr.map((item, index) => (
                         <View key={index} style={styles.galleryItem}>
                             {index === 3 ? (
-                                <Text style={styles.uploadText}>{item.type}</Text>
+                                <AppText style={styles.uploadText}>{item.type}</AppText>
                             ) : (
                                 <Image
                                     source={imagePaths.placeholder_img}
@@ -105,7 +105,7 @@ const ServiceSetup = () => {
                     <DropdownComponent
                         placeholderText='Select Category'
                         placeholderStyle={styles.dropdownPlaceholder}
-                        dropdownStyle={styles.dropdown}
+                        dropdown={styles.dropdown}
                         data={data}
                     />
                     <Spacing space={SH(25)} />
@@ -113,7 +113,7 @@ const ServiceSetup = () => {
                     <DropdownComponent
                         placeholderText='Team Size'
                         placeholderStyle={styles.dropdownPlaceholder}
-                        dropdownStyle={styles.dropdown}
+                        dropdown={styles.dropdown}
                         data={teamSizeData}
                     />
                     <Spacing space={SH(25)} />
@@ -129,13 +129,13 @@ const ServiceSetup = () => {
                         <DropdownComponent
                             placeholderText='Price'
                             placeholderStyle={styles.dropdownPlaceholder}
-                            dropdownStyle={styles.dropdownHalf}
+                            dropdown={styles.dropdownHalf}
                             data={priceData}
                         />
                         <DropdownComponent
                             placeholderText='Price Type'
                             placeholderStyle={styles.dropdownPlaceholder}
-                            dropdownStyle={styles.dropdownHalf}
+                            dropdown={styles.dropdownHalf}
                             data={teamSizeData}
                         />
                     </View>
@@ -163,7 +163,7 @@ const ServiceSetup = () => {
                         onChange={() => null}
                         label=""
                     />
-                    <Text style={styles.saveFilterText}>Set As Feature</Text>
+                    <AppText style={styles.saveFilterText}>Set As Feature</AppText>
                 </View>
 
                 <Buttons
@@ -173,7 +173,7 @@ const ServiceSetup = () => {
                     onPress={() => {
                         Keyboard.dismiss();
                         {
-                            prevPage === 'service_manage' ? navigation.goBack() : navigation.navigate(RouteName.HOME);
+                            prevPage === 'service_manage' ? navigation.goBack() : navigation.navigate(RouteName.SUBSCRIPTION_MANAGE);
                         }
                     }}
                 />
@@ -194,7 +194,8 @@ const styles = StyleSheet.create({
     },
     header: {
         backgroundColor: Colors.bgwhite,
-        paddingHorizontal: SW(37),
+        paddingHorizontal: SW(30),
+        marginTop:SH(10)
     },
     galleryText: {
         fontSize: SF(16),

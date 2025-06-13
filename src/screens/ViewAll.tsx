@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, Image, FlatList, StyleSheet, TouchableOpacity} from 'react-native';
 import {Colors, SH, SW, Fonts, SF, boxShadowlight} from '../utils';
 import imagePaths from '../assets/images';
-import {AppHeader, Container} from '../component';
+import {AppHeader, AppText, Container} from '../component';
 import {useNavigation, useRoute} from '@react-navigation/native';
 
 // Define Enum for List Types
@@ -102,17 +102,17 @@ const TwoColumnList: React.FC = () => {
                 resizeMode="contain"
                 style={styles.nearverifiedIcon}
               />
-              <Text style={styles.nearratingtext}>{'4.5'}</Text>
-              <Text style={styles.nearratingtextcount}>(450)</Text>
+              <AppText style={styles.nearratingtext}>{'4.5'}</AppText>
+              <AppText style={styles.nearratingtextcount}>(450)</AppText>
             </View> */}
-            <Text style={styles.nearSearvicename}>{item.name}</Text>
-            <Text style={styles.nearbyadd}>Ikeja, Nigeria</Text>
-            <Text style={styles.servicePrice}>
+            <AppText style={styles.nearSearvicename}>{item.name}</AppText>
+            <AppText style={styles.nearbyadd}>Ikeja, Nigeria</AppText>
+            <AppText style={styles.servicePrice}>
               $80{' '}
-              <Text style={[styles.nearbyadd, {fontSize: SH(12)}]}>
+              <AppText style={[styles.nearbyadd, {fontSize: SH(12)}]}>
                 Per hr.
-              </Text>
-            </Text>
+              </AppText>
+            </AppText>
           </View>
         </View>
       );

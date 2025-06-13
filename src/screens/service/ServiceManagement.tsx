@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, Image, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { boxShadowlight, Fonts, imagePaths, SF, SH, SW,Colors } from '../../utils';
-import { AppHeader, Container } from '../../component';
+import { AppHeader, AppText, Container } from '../../component';
 import RouteName from '../../navigation/RouteName';
 
 // Enums & Interfaces
@@ -77,14 +77,14 @@ const ServiceManagement: React.FC = () => {
                 </TouchableOpacity>
                 <Image source={item.image} style={styles.image} resizeMode="cover" />
                 <View style={styles.itemContent}>
-                    <Text style={styles.nearServiceName}>{item.name}</Text>
-                    <Text style={styles.nearbyAdd}>Ikeja, Nigeria</Text>
-                    <Text style={styles.servicePrice}>
+                    <AppText style={styles.nearServiceName}>{item.name}</AppText>
+                    <AppText style={styles.nearbyAdd}>Ikeja, Nigeria</AppText>
+                    <AppText style={styles.servicePrice}>
                         ${item.price}{' '}
-                        <Text style={styles.perHourText}>
+                        <AppText style={styles.perHourText}>
                             Per hr.
-                        </Text>
-                    </Text>
+                        </AppText>
+                    </AppText>
                 </View>
             </TouchableOpacity>
         );

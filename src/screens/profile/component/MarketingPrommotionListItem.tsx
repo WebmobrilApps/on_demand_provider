@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity, } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import { Buttons, ImageLoader } from '../../../component';
+import { AppText, Buttons, ImageLoader } from '../../../component';
 import { Fonts, imagePaths, SF, SH, SW, Colors, boxShadow } from '../../../utils';
 
 type MarketingPrommotionListItemProps = {
@@ -23,9 +23,9 @@ const MarketingPrommotionListItem: React.FC<MarketingPrommotionListItemProps> = 
                     />
                 </View>
                 <View style={styles.textWrapper}>
-                    <Text style={styles.text}>{text1}</Text>
-                    <Text style={styles.text2}>{text2}</Text>
-                    <Text style={styles.text3}>{text3}</Text>
+                    <AppText style={styles.text}>{text1}</AppText>
+                    <AppText style={styles.text2}>{text2}</AppText>
+                    <AppText style={styles.text3}>{text3}</AppText>
                 </View>
             </View>
 
@@ -35,9 +35,9 @@ const MarketingPrommotionListItem: React.FC<MarketingPrommotionListItemProps> = 
             {
                 type === 'maketing' && <View style={styles.validityContainer}>
                     <View style={styles.validityHeader}>
-                        <Text style={styles.validityText}>
+                        <AppText style={styles.validityText}>
                             Validity: 10 Feb - 20 Feb 2025
-                        </Text>
+                        </AppText>
                         <View style={styles.iconGroup}>
                             <TouchableOpacity style={styles.iconButton}>
                                 <Image style={styles.iconImage} source={imagePaths.Edit_gray} />
@@ -47,9 +47,9 @@ const MarketingPrommotionListItem: React.FC<MarketingPrommotionListItemProps> = 
                             </TouchableOpacity>
                         </View>
                     </View>
-                    <Text style={styles.statusText}>
-                        Status: <Text style={styles.activeStatus}>Active</Text>
-                    </Text>
+                    <AppText style={styles.statusText}>
+                        Status: <AppText style={styles.activeStatus}>Active</AppText>
+                    </AppText>
                 </View>
             }
             {

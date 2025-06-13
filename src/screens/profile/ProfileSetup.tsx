@@ -4,6 +4,7 @@ import {
   Keyboard,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from 'react-native';
 import {
@@ -11,7 +12,9 @@ import {
   Container,
   ImageLoader,
   Buttons,
-  InputField
+  InputField,
+  ImagePickerModal,
+  AppText
 } from '../../component';
 import { Colors, Fonts, SF, SH, SW } from '../../utils';
 import { useNavigation } from '@react-navigation/native';
@@ -19,7 +22,6 @@ import imagePaths from '../../assets/images';
 import { useTranslation } from 'react-i18next';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import RouteName from '../../navigation/RouteName';
-
 type ProfileSetupProps = {};
 
 
@@ -31,6 +33,8 @@ const ProfileSetup: React.FC<ProfileSetupProps> = ({ }) => {
   const [bussinessName, setBussinessName] = useState('')
   const [serviceArea, setServiceArea] = useState('')
   const [description, setDescription] = useState('')
+  const [modalVisible, setModalVisible] = useState(false);
+  const [image, setImage] = useState(null);
 
   return (
     <Container isPadding={false}>
@@ -39,6 +43,12 @@ const ProfileSetup: React.FC<ProfileSetupProps> = ({ }) => {
         onPress={() => navigation.goBack()}
         Iconname="arrowleft"
         headerStyle={styles.header}
+      />
+      <ImagePickerModal
+        visible={modalVisible}
+        onClose={() => setModalVisible(false)}
+        onImageSelected={img => {console.log('imgimg--',img);
+         setImage(img)}}
       />
 
       <KeyboardAwareScrollView
@@ -51,13 +61,13 @@ const ProfileSetup: React.FC<ProfileSetupProps> = ({ }) => {
       >
         <View style={styles.container}>
           <View style={styles.profileContainer}>
-            <View style={styles.userConImage}>
+            <TouchableOpacity activeOpacity={1} onPress={() => setModalVisible(true)} style={styles.userConImage}>
               <ImageLoader
                 source={imagePaths.user_img}
                 resizeMode="cover"
                 mainImageStyle={styles.userImage}
               />
-            </View>
+            </TouchableOpacity>
             <Buttons
               buttonStyle={styles.uploadButton}
               textColor={Colors.textWhite}
@@ -73,10 +83,10 @@ const ProfileSetup: React.FC<ProfileSetupProps> = ({ }) => {
               resizeMode="cover"
               style={styles.imageIcon}
             />
-            <Text style={styles.chooseImageText}>Choose Image</Text>
+            <AppText style={styles.chooseImageText}>Choose Image</AppText>
           </View>
-          <Text style={styles.imageSupportText}>Support : JPG , PNG, JPEG</Text>
-          <Text style={styles.personalDetailText}>Personal Details</Text>
+          <AppText style={styles.imageSupportText}>Support : JPG , PNG, JPEG</AppText>
+          <AppText style={styles.personalDetailText}>Personal Details</AppText>
 
           <InputField
             label={'Business Name'}
@@ -116,7 +126,7 @@ const ProfileSetup: React.FC<ProfileSetupProps> = ({ }) => {
             buttonStyle={styles.submitButton}
             textColor={Colors.textWhite}
             title={t('placeholders.save')}
-            onPress={() =>{Keyboard.dismiss();navigation.navigate(RouteName.SERVICE_SETUP)}}
+            onPress={() => { Keyboard.dismiss(); navigation.navigate(RouteName.SERVICE_SETUP,{prevPage:'profile-setup'}) }}
           />
         </View>
       </KeyboardAwareScrollView>

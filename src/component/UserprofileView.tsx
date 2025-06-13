@@ -4,6 +4,7 @@ import ImageLoader from './ImageLoader'; // adjust import path as needed
 import VectoreIcons from './VectoreIcons'; // adjust import path as needed
 import { Colors, Fonts, SF, SH, SW } from '../utils';
 import imagePaths from '../assets/images';
+import AppText from './AppText';
 
 const UserprofileView = ({ title = '', imageSource = imagePaths.user0,height=SF(50),width=SF(50)  }) => {
   return (
@@ -15,9 +16,9 @@ const UserprofileView = ({ title = '', imageSource = imagePaths.user0,height=SF(
           mainImageStyle={styles.img}
         />
       </View>
-      {title && <Text numberOfLines={2} style={styles.serviceTitle}>
+      {title && <AppText numberOfLines={2} style={styles.serviceTitle}>
         {title}
-      </Text>}
+      </AppText>}
     </View>
   );
 };

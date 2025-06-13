@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FlatList, Image, Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Colors, Fonts, SF, SH, SW } from '../../../utils';
-import { Buttons, Divider, Spacing, UserprofileView, VectoreIcons } from '../../../component';
+import { AppText, Buttons, Divider, Spacing, UserprofileView, VectoreIcons } from '../../../component';
 import BookingServiceItem from './BookingServiceItem';
 import imagePaths from '../../../assets/images';
 
@@ -86,8 +86,8 @@ const RescheduleBooking: React.FC<RescheduleBookingProps> = ({
       ]}
       onPress={() => setSelectedDateIndex(selectedDateIndex === index ? null : index)}
     >
-      <Text style={[styles.dateDayText, selectedDateIndex === index && { color: Colors.textWhite }]}>{item.day}</Text>
-      <Text style={[styles.dateNumberText, selectedDateIndex === index && { color: Colors.textWhite }]}>{item.date}</Text>
+      <AppText style={[styles.dateDayText, selectedDateIndex === index && { color: Colors.textWhite }]}>{item.day}</AppText>
+      <AppText style={[styles.dateNumberText, selectedDateIndex === index && { color: Colors.textWhite }]}>{item.date}</AppText>
     </TouchableOpacity>
   );
 
@@ -99,7 +99,7 @@ const RescheduleBooking: React.FC<RescheduleBookingProps> = ({
       ]}
       onPress={() => setSelectedTimeIndex(selectedTimeIndex === index ? null : index)}
     >
-      <Text style={[styles.timeText,selectedTimeIndex === index && { color: Colors.textWhite }]}>{item.time}</Text>
+      <AppText style={[styles.timeText,selectedTimeIndex === index && { color: Colors.textWhite }]}>{item.time}</AppText>
     </TouchableOpacity>
   );
 
@@ -121,7 +121,7 @@ const RescheduleBooking: React.FC<RescheduleBookingProps> = ({
               size={SF(24)}
             />
           </TouchableOpacity>
-          <Text style={styles.subHeading}>Select date and time</Text>
+          <AppText style={styles.subHeading}>Select date and time</AppText>
           <Divider
             color={Colors.textAppColor + 50}
             height={0.5}
@@ -129,7 +129,7 @@ const RescheduleBooking: React.FC<RescheduleBookingProps> = ({
           />
           <View style={styles.headerRow}>
             <Image source={imagePaths.calender_icon} style={styles.icon} />
-            <Text style={styles.headerText}>Select date</Text>
+            <AppText style={styles.headerText}>Select date</AppText>
           </View>
           <FlatList
             data={dateData}
@@ -143,7 +143,7 @@ const RescheduleBooking: React.FC<RescheduleBookingProps> = ({
       
           <View style={styles.headerRow}>
             <Image source={imagePaths.timer_icon} style={styles.icon} />
-            <Text style={styles.headerText}>Select time</Text>
+            <AppText style={styles.headerText}>Select time</AppText>
           </View>
      
           <FlatList

@@ -21,6 +21,7 @@ import {
   useProfileUpdate,
 } from '../../utils';
 import {
+  AppText,
   AuthBottomContainer,
   AuthImgComp,
   Container,
@@ -154,8 +155,10 @@ const LoginScreen: React.FC<LoginProps> = ({ }) => {
           <View style={{ paddingVertical: SH(35), paddingHorizontal: SW(20) }}>
             <Formik
               initialValues={{
-                email: 'veer@mailiantor.com',
-                password: 'Qwerty@123',
+                // email: 'veer@mailiantor.com',
+                // password: 'Qwerty@123',
+                email: '',
+                password: '',
               }}
               validationSchema={validationSchema}
               onSubmit={(values, { resetForm }) => {
@@ -196,13 +199,13 @@ const LoginScreen: React.FC<LoginProps> = ({ }) => {
 
                   <Spacing space={SF(8)} />
 
-                  <Text
+                  <AppText
                     onPress={() => {
                       navigation.navigate(RouteName.FORGOT_PASS);
                     }}
                     style={styles.forgotPassTxt}>
                     {t('login.forgotPassword')}
-                  </Text>
+                  </AppText>
 
                   <Spacing space={SH(30)} />
 
@@ -221,7 +224,7 @@ const LoginScreen: React.FC<LoginProps> = ({ }) => {
 
                   <View style={styles.lineViewContainer}>
                     <View style={styles.leftRightLine} />
-                    <Text style={styles.ortext}>{t('login.orText')}</Text>
+                    <AppText style={styles.ortext}>{t('login.orText')}</AppText>
                     <View style={styles.leftRightLine} />
                   </View>
 
@@ -242,16 +245,16 @@ const LoginScreen: React.FC<LoginProps> = ({ }) => {
 
                   <Spacing space={SH(10)} />
 
-                  <Text style={styles.dontHaveAccTxt}>
+                  <AppText style={styles.dontHaveAccTxt}>
                     {t('login.dontHaveAccount')}
-                    <Text
+                    <AppText
                       onPress={() => {
                         navigation.navigate(RouteName.SIGNUP);
                       }}
                       style={{ fontFamily: Fonts.SEMI_BOLD, fontSize: SF(14) }}>
                       {t('login.signUp')}
-                    </Text>
-                  </Text>
+                    </AppText>
+                  </AppText>
                 </>
               )}
             </Formik>
@@ -322,7 +325,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     justifyContent: 'space-between',
   },
-  fingerPrintImage:{ height: SF(46), width: SF(46), resizeMode: "contain", alignSelf: "center" },
+  fingerPrintImage: { height: SF(46), width: SF(46), resizeMode: "contain", alignSelf: "center" },
   dontHaveAccTxt: {
     color: Colors.textWhite,
     fontFamily: Fonts.REGULAR,

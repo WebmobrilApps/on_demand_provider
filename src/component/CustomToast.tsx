@@ -2,9 +2,10 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Toast from 'react-native-toast-message';
-import { Colors, Fonts, SF, boxShadow } from '../utils';
+import { Colors, Fonts, SF, SH, SW, boxShadow } from '../utils';
+import AppText from './AppText';
 
-type ToastType = 'success' | 'error' | 'info';
+type ToastType = 'success' | 'error' | 'info' | 'exit';
 
 type CustomToastProps = {
   text1: string;
@@ -18,6 +19,7 @@ const ToastBox = ({ text1, text2, type, props }: CustomToastProps & { type: Toas
   const { customOnPress } = props;
 
   const colorMap = {
+    exit: 'green',
     success: 'green',
     error: 'red',
     info: '#ffc107',
@@ -25,11 +27,11 @@ const ToastBox = ({ text1, text2, type, props }: CustomToastProps & { type: Toas
 
   return (
     <View style={[styles.toastContainer, { borderLeftColor: colorMap[type] }, boxShadow]}>
-      <Text style={styles.textTitle}>{text1}</Text>
-      <Text style={styles.textMessage}>{text2}</Text>
+      <AppText style={styles.textTitle}>{text1}</AppText>
+      <AppText style={styles.textMessage}>{text2}</AppText>
       {customOnPress && (
         <TouchableOpacity onPress={customOnPress}>
-          <Text style={styles.okButton}>OK</Text>
+          <AppText style={styles.okButton}>OK</AppText>
         </TouchableOpacity>
       )}
     </View>
@@ -46,6 +48,11 @@ const toastConfig = {
   info: ({ text1, text2, props }: any) => (
     <ToastBox text1={text1} text2={text2} props={props} type="info" />
   ),
+  exit: ({ text1 }: any) => (
+    <View style={styles.exitToast}>
+      <Text style={styles.exitText} allowFontScaling={false}>{text1}</Text>
+    </View>
+  ),
 };
 
 export const showAppToast = ({
@@ -54,12 +61,14 @@ export const showAppToast = ({
   type = 'info',
   timeout = 4000,
   onOkPress,
+  position = 'top',
 }: {
   title: string;
   message: string;
   type?: ToastType;
   timeout?: number;
   onOkPress?: () => void;
+  position?: 'top' | 'bottom';
 }) => {
   Toast.show({
     type,
@@ -67,34 +76,26 @@ export const showAppToast = ({
     text2: message,
     visibilityTime: timeout,
     autoHide: !onOkPress,
+    position,
     props: {
       customOnPress: onOkPress,
     },
   });
 };
 
-// @ts-ignore
 export const ToastService = () => <Toast config={toastConfig} />;
 
 const styles = StyleSheet.create({
   toastContainer: {
-    paddingVertical: 12,
-    paddingHorizontal: 16,
+    paddingVertical: SH(10),
+    paddingHorizontal: SW(12),
     flexDirection: 'column',
     backgroundColor: '#ffffff',
     borderLeftWidth: 5,
     borderRadius: 8,
-    marginHorizontal: 10,
-    marginVertical: 8,
+    marginHorizontal: SW(10),
+    marginVertical: SH(6),
     width: '90%',
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
   },
   textTitle: {
     color: Colors.black,
@@ -103,11 +104,28 @@ const styles = StyleSheet.create({
   },
   textMessage: {
     color: Colors.textAppColor,
-    fontSize: SF(10),
+    fontSize: SF(12),
     fontFamily: Fonts.PlusJakartaSans_MEDIUM,
   },
   okButton: {
-    color: 'blue',
-    marginTop: 8,
+    color: Colors.themeColor,
+    marginTop: SH(5),
+    fontSize: SF(12),
+    fontFamily: Fonts.MEDIUM,
+  },
+  exitToast: {
+    minHeight: SH(30),
+    minWidth: SW(120),
+    backgroundColor: '#000',
+    paddingVertical: SH(4),
+    paddingHorizontal: SW(10),
+    borderRadius: 8,
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
+  },
+  exitText: {
+    color: '#fff',
+    fontSize: SF(12),
   },
 });

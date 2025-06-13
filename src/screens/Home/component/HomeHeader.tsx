@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { UserprofileView } from "../../../component";
+import { AppText, UserprofileView } from "../../../component";
 import imagePaths from "../../../assets/images";
 import { Colors, Fonts, SF, SH, SW } from "../../../utils";
 import RouteName from "../../../navigation/RouteName";
@@ -18,15 +18,17 @@ const HomeHeader: FC<HomeHeaderProps> = ({ data }) => {
             <View style={styles.headerRow}>
                 <UserprofileView imageSource={imagePaths.user4} />
                 <View style={styles.userInfo}>
-                    <Text style={styles.userName}>Marie Rogahn</Text>
-                    <Text style={styles.userEmail}>Service provider</Text>
+                    <AppText style={styles.userName}>Marie Rogahn</AppText>
+                    <AppText style={styles.userEmail}>Service provider</AppText>
                 </View>
                 <View style={styles.iconContainer}>
-                    <TouchableOpacity onPress={() =>  navigate(RouteName.BOOK_APPOINT, { bookingType: 'immediate' })} style={styles.iconButton}>
+                    <TouchableOpacity
+                        // onPress={() =>  navigate(RouteName.BOOK_APPOINT, { bookingType: 'immediate' })} 
+                        style={styles.iconButton}>
                         <Image source={imagePaths.calender_icon} style={styles.icon} />
                     </TouchableOpacity>
-                    <TouchableOpacity 
-                        style={styles.iconButton} 
+                    <TouchableOpacity
+                        style={styles.iconButton}
                         onPress={() => {
                             navigation.navigate(RouteName.NOTIFICATION)
                         }}

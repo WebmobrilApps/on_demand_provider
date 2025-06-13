@@ -8,7 +8,7 @@ import {
   Image,
   Dimensions,
 } from 'react-native';
-import { BottomBar, Container, Divider, ImageLoader, VectoreIcons } from '../../component';
+import { AppText, BottomBar, Container, Divider, ImageLoader, VectoreIcons } from '../../component';
 import { boxShadow, inboxData, Colors, Fonts, imagePaths, SF, SH, SW, inboxMenuData, useDisableGestures } from '../../utils';
 import { useNavigation } from '@react-navigation/native';
 import RouteName from '../../navigation/RouteName';
@@ -34,9 +34,9 @@ const InboxScreen = () => {
           <ImageLoader source={{ uri: item.avatar }} mainImageStyle={styles.avatar} />
         </View>
         <View style={{ alignItems: "flex-start" }}>
-          <Text style={styles.name}>{item.name}</Text>
-          <Text style={styles.lastMessage}>{item.lastMessage}</Text>
-          <Text style={styles.time}><VectoreIcons icon='MaterialCommunityIcons' name="clock-outline" size={SF(12)} color="#787878" /> {item.time}</Text>
+          <AppText style={styles.name}>{item.name}</AppText>
+          <AppText style={styles.lastMessage}>{item.lastMessage}</AppText>
+          <AppText style={styles.time}><VectoreIcons icon='MaterialCommunityIcons' name="clock-outline" size={SF(12)} color="#787878" /> {item.time}</AppText>
         </View>
       </TouchableOpacity>
       <View style={{ marginTop: SH(10) }}>
@@ -52,7 +52,7 @@ const InboxScreen = () => {
       <View style={styles.container}>
         <View style={styles.headerRow}>
 
-          <Text style={styles.header}>Chat</Text>
+          <AppText style={styles.header}>Chat</AppText>
         </View>
 
         <FlatList

@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Colors, Fonts, SF, SH, SW } from "../../../utils";
-import { Buttons, UserprofileView, VectoreIcons } from "../../../component";
+import { AppText, Buttons, UserprofileView, VectoreIcons } from "../../../component";
 import { useNavigation } from "@react-navigation/native";
 import RouteName from "../../../navigation/RouteName";
 import imagePaths from "../../../assets/images";
@@ -29,7 +29,7 @@ interface InfoRowProps {
 const InfoRow: FC<InfoRowProps> = ({ icon, text }) => (
   <View style={styles.infoRow}>
     <Image source={icon} style={styles.infoIcon} resizeMode="contain" />
-    <Text numberOfLines={1} style={styles.infoText}>{text}</Text>
+    <AppText numberOfLines={1} style={styles.infoText}>{text}</AppText>
   </View>
 );
 
@@ -54,10 +54,10 @@ const BookingItem: FC<BookingItemProps> = ({
       <UserprofileView />
       <View style={styles.bookingInfo}>
         <View style={styles.nameIdContainer}>
-          <Text style={styles.bookingName}>{name}</Text>
-          <Text style={styles.bookingId}>#{id}</Text>
+          <AppText style={styles.bookingName}>{name}</AppText>
+          <AppText style={styles.bookingId}>#{id}</AppText>
         </View>
-        <Text style={styles.bookingJob}>{job}</Text>
+        <AppText style={styles.bookingJob}>{job}</AppText>
         <InfoRow icon={imagePaths.location_pin} text={location} />
         <InfoRow icon={imagePaths.calender_icon1} text={date} />
       </View>

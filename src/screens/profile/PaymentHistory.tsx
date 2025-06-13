@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import {
   AppHeader,
+  AppText,
   Buttons,
   Container,
   PaymentHistoryItem,
@@ -61,14 +62,14 @@ const ChangePassword: React.FC = () => {
           style={styles.totalSpentContainer}
         >
           <View>
-            <Text style={styles.totalSpentText}>
+            <AppText style={styles.totalSpentText}>
               Total Earnings :{' '}
-              <Text style={styles.totalSpentAmount}>$5000</Text>
-            </Text>
-            <Text style={styles.currentBalanceText}>
+              <AppText style={styles.totalSpentAmount}>$5000</AppText>
+            </AppText>
+            <AppText style={styles.currentBalanceText}>
               Current Balance :{' '}
-              <Text style={styles.currentBalanceAmount}>$5000</Text>
-            </Text>
+              <AppText style={styles.currentBalanceAmount}>$5000</AppText>
+            </AppText>
             <Buttons
               buttonStyle={styles.withdrawButton}
               title="Withdraw"
@@ -85,7 +86,7 @@ const ChangePassword: React.FC = () => {
         </TouchableOpacity>
 
         <View style={styles.transactionHistoryContainer}>
-          <Text style={styles.transactionHistoryText}>Transaction History</Text>
+          <AppText style={styles.transactionHistoryText}>Transaction History</AppText>
           <View style={styles.iconContainer}>
             <TouchableOpacity
               onPress={() => navigation.navigate(RouteName.PAY_HISTORY_SEARCH)}
@@ -121,7 +122,7 @@ export default ChangePassword;
 const styles = StyleSheet.create({
   header: {
     backgroundColor: Colors.bgwhite,
-    paddingHorizontal: SW(25),
+    paddingHorizontal: SW(30),
   },
   container: {
     paddingHorizontal: SW(25),

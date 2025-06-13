@@ -1,7 +1,7 @@
 import React from 'react';
 import { Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Colors, Fonts, SF, SH, SW } from '../../../utils';
-import { Buttons, Spacing, UserprofileView, VectoreIcons } from '../../../component';
+import { AppText, Buttons, Spacing, UserprofileView, VectoreIcons } from '../../../component';
 import BookingServiceItem from './BookingServiceItem';
 
 // Interface for ChangeServiceProfiderConfirmModal props
@@ -24,7 +24,7 @@ interface ModalHeaderProps {
 // Common component for date selection
 const DateSelection: React.FC<DateSelectionProps> = ({ value }) => (
   <View style={styles.valuesubContainer}>
-    <Text style={styles.valuetxt}>{value}</Text>
+    <AppText style={styles.valuetxt}>{value}</AppText>
   </View>
 );
 

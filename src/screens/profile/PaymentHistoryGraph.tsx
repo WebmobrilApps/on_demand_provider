@@ -8,7 +8,7 @@ import {
   VictoryAxis,
 } from 'victory-native';
 import { Colors, Fonts, SF, SH, SW } from '../../utils';
-import { AppHeader, Buttons, DropdownComponent, Spacing, VectoreIcons } from '../../component';
+import { AppHeader, AppText, Buttons, Container, DropdownComponent, Spacing, VectoreIcons } from '../../component';
 import { useNavigation } from '@react-navigation/native';
 import OnlinePaymentModal from './component/OnlinePaymentModal';
 
@@ -42,7 +42,7 @@ const VictoryChartExample: React.FC = () => {
   const daysArray = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   const [payModal, setPayModal] = useState(false);
   return (
-    <View style={styles.container}>
+    <Container style={styles.container}>
       <OnlinePaymentModal
         visible={payModal}
         onClose={() => { setPayModal(false) }}
@@ -57,15 +57,15 @@ const VictoryChartExample: React.FC = () => {
 
       <View style={styles.balanceContainer}>
         <View>
-          <Text style={styles.currentbal}>Current Balance :</Text>
-          <Text style={styles.currentbal1}>₹25,000</Text>
+          <AppText style={styles.currentbal}>Current Balance :</AppText>
+          <AppText style={styles.currentbal1}>₹25,000</AppText>
         </View>
         <Buttons buttonStyle={styles.withdrawButton} title="Withdraw" onPress={() => { setPayModal(true) }}/>
       </View>
 
       <Spacing space={SH(40)} />
-      <Text style={styles.weeklytext}>This Week Earnings</Text>
-      <Text style={styles.weekprice}>₹15,000</Text>
+      <AppText style={styles.weeklytext}>This Week Earnings</AppText>
+      <AppText style={styles.weekprice}>₹15,000</AppText>
 
       <Svg width={width} height={350}>
         <VictoryChart
@@ -102,14 +102,14 @@ const VictoryChartExample: React.FC = () => {
       </Svg>
 
       <DropdownComponent
-        dropdownStyle={styles.dropdown}
+        dropdown={styles.dropdown}
         data={data1}
         placeholderText="Select Report"
         renderRightIcon={
           <VectoreIcons icon="Feather" name="chevron-down" size={SW(20)} />
         }
       />
-    </View>
+    </Container>
   );
 };
 

@@ -7,10 +7,10 @@ import {
 } from 'react-native';
 import { Colors, Fonts, regex, SF, SH, SW } from '../../utils';
 import {
+  AppText,
   AuthBottomContainer,
   AuthImgComp,
   Container,
-  CustomToast,
   InputField,
  
   Spacing,
@@ -28,6 +28,7 @@ import { useSendOtpMutation } from '../../services';
 type ForgotProps = {};
 
 const ForgotScreen: React.FC<ForgotProps> = ({ }) => {
+  
   const navigation = useNavigation<any>();
   const { t } = useTranslation();
   const validationSchema = Yup.object().shape({
@@ -38,6 +39,8 @@ const ForgotScreen: React.FC<ForgotProps> = ({ }) => {
 
   const [sendOtp, { isLoading: otpLoader }] = useSendOtpMutation();
   const btnForgot = async (values: { email: string }, resetForm: any) => {
+     navigation.navigate(RouteName.OTP_VERIFY, { fromScreen: 'forgotpass', userToken: 'response.ResponseBody.token', email: 'email@mailinator.com' });
+     return 
     let userData = {
       email: values.email,
     };
@@ -46,11 +49,11 @@ const ForgotScreen: React.FC<ForgotProps> = ({ }) => {
       const response = await sendOtp(userData).unwrap();
       console.log('sendOtp res--', response);
       if (response.succeeded) {
-        CustomToast({ message: 'Your OTP', description: response.ResponseBody.otp, position: 'top', type: 'success', });
+        // CustomToast({ message: 'Your OTP', description: response.ResponseBody.otp, position: 'top', type: 'success', });
         navigation.navigate(RouteName.OTP_VERIFY, { fromScreen: 'forgotpass', userToken: response.ResponseBody.token, email: values.email });
       } else {
         let mess = response?.ResponseMessage || response.error?.ResponseMessage || 'Something went wrong. Please try again.';
-        CustomToast({ message: 'Error', description: mess, position: 'top', type: 'danger', });
+        // CustomToast({ message: 'Error', description: mess, position: 'top', type: 'danger', });
       }
     } catch (error) {
       console.error('Login Failed:', error);
@@ -88,10 +91,10 @@ const ForgotScreen: React.FC<ForgotProps> = ({ }) => {
             }) => (
               <View style={styles.bottomInnerContainer}>
                 <View>
-                  <Text style={styles.heading}>{t('forgotpass.forgotPassword')}</Text>
-                  <Text style={styles.subtitile}>
+                  <AppText style={styles.heading}>{t('forgotpass.forgotPassword')}</AppText>
+                  <AppText style={styles.subtitile}>
                     {t('forgotpass.subtitle')}
-                  </Text>
+                  </AppText>
                   <InputField
                     placeholder={t('placeholders.email')}
                     value={values.email}

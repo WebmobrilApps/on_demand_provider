@@ -12,7 +12,7 @@ import DatePicker from 'react-native-date-picker';
 import moment from 'moment';
 import { Colors, Fonts, SF, SH, SW } from '../../utils';
 import LabelBarAvail from './component/LabelBarAvail';
-import { AppHeader, Buttons, VectoreIcons } from '../../component';
+import { AppHeader, AppText, Buttons, VectoreIcons } from '../../component';
 import { useNavigation } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
 import RouteName from '../../navigation/RouteName';
@@ -103,23 +103,23 @@ const AvailabilityScreen = () => {
                                 size={SF(24)}
                             />
                         </TouchableOpacity>
-                        <Text style={styles.modalTitle}>Select Time</Text>
+                        <AppText style={styles.modalTitle}>Select Time</AppText>
 
                         <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: "88%", marginVertical: 5, }} onPress={() => setPickerMode('start')}>
-                            <Text style={styles.timeLabel}>Start Time</Text>
+                            <AppText style={styles.timeLabel}>Start Time</AppText>
                             <View style={styles.timeBox}>
-                                <Text style={styles.timeValue}>
+                                <AppText style={styles.timeValue}>
                                     {moment(startTime).format('h:mm a')}
-                                </Text>
+                                </AppText>
                             </View>
                         </TouchableOpacity>
 
                         <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: "88%", marginVertical: 5, }} onPress={() => setPickerMode('end')}>
-                            <Text style={styles.timeLabel}>End Time</Text>
+                            <AppText style={styles.timeLabel}>End Time</AppText>
                             <View style={styles.timeBox}>
-                                <Text style={styles.timeValue}>
+                                <AppText style={styles.timeValue}>
                                     {moment(endTime).format('h:mm a')}
-                                </Text>
+                                </AppText>
                             </View>
                         </TouchableOpacity>
 
@@ -141,7 +141,7 @@ const AvailabilityScreen = () => {
                             style={styles.confirmButton}
                             onPress={handleConfirm}
                         >
-                            <Text style={styles.confirmText}>Confirm</Text>
+                            <AppText style={styles.confirmText}>Confirm</AppText>
                         </TouchableOpacity>
                     </View>
                 </View>

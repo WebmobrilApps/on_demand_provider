@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import React, { FC } from 'react';
-import { Checkbox, Spacing, VectoreIcons } from '../../../component';
+import { AppText, Checkbox, Spacing, VectoreIcons } from '../../../component';
 import { Colors, SF, SH, SW } from '../../../utils';
 import SubCategoryItem from './SubCategoryItem';
 
@@ -44,7 +44,7 @@ const CategoryItem: FC<CategoryItemProps> = ({
           label=""
         />
         <Spacing horizontal space={SW(8)} />
-        <Text style={styles.title}>{category.title}</Text>
+        <AppText style={styles.title}>{category.title}</AppText>
         <TouchableOpacity
           style={styles.dropdownIcon}
           onPress={() => onToggleDropdown(category.categoryId)}

@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { AppHeader, Container, ImageLoader, Spacing, VectoreIcons } from '../../component';
+import { Pressable, ScrollView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { AppHeader, AppText, Container, ImageLoader, Spacing, VectoreIcons } from '../../component';
 import { Colors, Fonts, SF, SH, SW } from '../../utils';
 import imagePaths from '../../assets/images';
-import { useNavigation } from '@react-navigation/native';
-import { Details, Portfolio, Reviews, Services } from './component';
+import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/native';
+import { ConfirmBookingTypeModal, Details, Portfolio, Reviews, Services } from './component';
+import RouteName from '../../navigation/RouteName';
+import { ConfirmBookingModal } from '../Bookings/component';
 
 interface shopProps { }
 const shopDetailTabs = [
@@ -17,9 +19,43 @@ const shopDetailTabs = [
 const ShopDetails: React.FC<shopProps> = () => {
     const navigation = useNavigation<any>();
     const [activeTab, setActiveTabs] = useState<string>('services');
+    const [confirmBookingTypeModal, setConfirmBookingTypeModal] = useState<boolean>(false);
+    const [forwhomCheck, setForwhomCheck] = useState(false)
+    const [modalVisible, setModalVisible] = useState<boolean>(false)
+    const route = useRoute<any>();
+    let bookingType = route?.params?.bookingType;
+
+     
+    const btnBookService = () => {
+        bookingType == 'immediate' ? setModalVisible(true) : setConfirmBookingTypeModal(true)
+    }
+
     return (
-        <Container isPadding={false}>
-              
+        <Container isAuth>
+            <Spacing space={SH(20)}/>
+            <ConfirmBookingModal
+                forwhomCheck={forwhomCheck}
+                setForwhomCheck={() => { setForwhomCheck(!forwhomCheck) }}
+                modalVisible={modalVisible}
+                closeModal={() => {
+                    setModalVisible(false);
+                }}
+                btnSubmit={() => {
+                    setModalVisible(false);
+                    if (forwhomCheck) {
+                        setTimeout(() => {
+                            navigation.navigate(RouteName.ADD_OTHER_PERSON_DETAIL)
+                        }, 200);
+                    } else {
+                        setTimeout(() => {
+                            navigation.navigate(RouteName.PAYMENT_SCREEN)
+                        }, 200);
+                    }
+                }}
+            />
+            <StatusBar
+                barStyle={'dark-content'}
+            />
             <Spacing />
             <View style={{
                 flexDirection: "row", alignItems: "center", paddingHorizontal: "9%", paddingBottom: SH(10), borderBottomWidth: activeTab === 'details' ? 0.6 : 0,
@@ -36,9 +72,9 @@ const ShopDetails: React.FC<shopProps> = () => {
                     />
                 </TouchableOpacity>
                 {activeTab === 'details' ? <View style={[styles.shopTextBlock, { marginLeft: 20 }]}>
-                    <Text style={styles.shopTitle}>
-                        WM Barbershop <Text style={styles.shopCount}>(250)</Text>
-                    </Text>
+                    <AppText style={styles.shopTitle}>
+                        WM Barbershop <AppText style={styles.shopCount}>(250)</AppText>
+                    </AppText>
                 </View> : ''}
             </View>
 
@@ -58,12 +94,12 @@ const ShopDetails: React.FC<shopProps> = () => {
 
                     <View style={styles.shopInfoContainer}>
                         <View style={styles.shopTextBlock}>
-                            <Text style={styles.shopTitle}>
-                                WM Barbershop <Text style={styles.shopCount}>(250)</Text>
-                            </Text>
-                            <Text style={styles.shopAddress}>
+                            <AppText style={styles.shopTitle}>
+                                WM Barbershop <AppText style={styles.shopCount}>(250)</AppText>
+                            </AppText>
+                            <AppText style={styles.shopAddress}>
                                 1893 Cheshire Bridge Rd Ne, 30325 {'\n'}Home Service
-                            </Text>
+                            </AppText>
                         </View>
                         <View style={styles.iconsBlock}>
                             <VectoreIcons
@@ -87,19 +123,24 @@ const ShopDetails: React.FC<shopProps> = () => {
                     {
                         shopDetailTabs.map((item, index) => {
                             return <Pressable onPress={() => { setActiveTabs(item.name.toLowerCase()); }} key={index.toString() + 'tabs'}>
-                                <Text style={activeTab === item.name.toLowerCase() ? styles.activeTab : styles.inactiveTab}>{item.name}</Text>
+                                <AppText style={activeTab === item.name.toLowerCase() ? styles.activeTab : styles.inactiveTab}>{item.name}</AppText>
                             </Pressable>;
                         })
                     }
                 </View>
                 {activeTab !== 'details' && <Spacing />}
-                {activeTab === 'services' && <Services />}
+                {activeTab === 'services' && <Services onClick={() => btnBookService()} />}
                 {activeTab === 'reviews' && <Reviews />}
                 {activeTab === 'portfolio' && <Portfolio />}
-                {activeTab === 'details' && <Details/>}
+                {activeTab === 'details' && <Details />}
                 {/* pages=========== */}
 
             </ScrollView>
+            <ConfirmBookingTypeModal
+                modalVisible={confirmBookingTypeModal}
+                submitButton={() => { }}
+                closeModal={() => { setConfirmBookingTypeModal(false) }}
+            />
         </Container>
     );
 };
@@ -165,18 +206,18 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         paddingVertical: SH(10),
         backgroundColor: Colors.white,
-        borderBottomWidth: 0.6,
+        borderBottomWidth: 0.7,
         borderColor: '#3D3D3D40',
         paddingHorizontal: '7%',
     },
     activeTab: {
-        fontSize: SF(14),
+        fontSize: SF(12),
         fontFamily: Fonts.SEMI_BOLD,
         color: Colors.themeColor,
         textDecorationLine: 'underline',
     },
     inactiveTab: {
-        fontSize: SF(14),
+        fontSize: SF(12),
         fontFamily: Fonts.MEDIUM,
         color: Colors.txtAppDarkColor,
     },

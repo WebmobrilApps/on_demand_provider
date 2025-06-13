@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Colors, Fonts, SF, SH, SW } from '../../utils';
+import AppText from '../AppText';
 
 
 type TabTopCalenderProps = {
@@ -11,10 +12,10 @@ const TabTopCalender: React.FC<TabTopCalenderProps> = ({ activeTab,changeTab }) 
     return (
         <View style={styles.container}>
             <TouchableOpacity activeOpacity={0.8} onPress={()=>{changeTab(1)}}  style={activeTab == 1 ? styles.tabac : styles.tab}>
-                <Text style={activeTab == 1 ? styles.textac : styles.text}>My Booking</Text>
+                <AppText style={activeTab == 1 ? styles.textac : styles.text}>My Booking</AppText>
             </TouchableOpacity>
             <TouchableOpacity activeOpacity={0.8} onPress={()=>{changeTab(2)}} style={activeTab == 2 ? styles.tabac : styles.tab}>
-                <Text style={activeTab == 2 ? styles.textac : styles.text}>Other Booking</Text>
+                <AppText style={activeTab == 2 ? styles.textac : styles.text}>Other Booking</AppText>
             </TouchableOpacity>
             
         </View>

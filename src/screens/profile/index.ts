@@ -13,3 +13,4 @@ export {default as PaymentHistorySearch} from './PaymentHistorySearch';
 export {default as PaymentInvoice} from './PaymentInvoice';
 export {default as ShareProfile} from './ShareProfile';
 export {default as CustomerSupport} from './CustomerSupport';
+export {default as SubscriptionManage} from './SubscriptionManage';

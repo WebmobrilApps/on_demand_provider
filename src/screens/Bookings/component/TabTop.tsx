@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Colors, Fonts, SF, SH, SW } from '../../../utils';
+import { AppText } from '../../../component';
 
 
 type TabTopProps = {
@@ -11,13 +12,13 @@ const TabTop: React.FC<TabTopProps> = ({ activeTab,changeTab }) => {
     return (
         <View style={styles.container}>
             <TouchableOpacity activeOpacity={0.8} onPress={()=>{changeTab(1)}}  style={activeTab == 1 ? styles.tabac : styles.tab}>
-                <Text style={activeTab == 1 ? styles.textac : styles.text}>Upcoming</Text>
+                <AppText style={activeTab == 1 ? styles.textac : styles.text}>Upcoming</AppText>
             </TouchableOpacity>
             <TouchableOpacity activeOpacity={0.8} onPress={()=>{changeTab(2)}} style={activeTab == 2 ? styles.tabac : styles.tab}>
-                <Text style={activeTab == 2 ? styles.textac : styles.text}>Ongoing</Text>
+                <AppText style={activeTab == 2 ? styles.textac : styles.text}>Ongoing</AppText>
             </TouchableOpacity>
             <TouchableOpacity activeOpacity={0.8} onPress={()=>{changeTab(3)}} style={activeTab == 3 ? styles.tabac : styles.tab}>
-                <Text style={activeTab == 3 ? styles.textac : styles.text}>Completed</Text>
+                <AppText style={activeTab == 3 ? styles.textac : styles.text}>Completed</AppText>
             </TouchableOpacity>
         </View>
     );

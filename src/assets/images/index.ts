@@ -94,5 +94,6 @@ const imagePaths = {
   finger_print: require('./finger_print.png'),
   switch_off: require('./switch_off.png'),
   switch_on: require('./switch_on.png'),
+  splash_logo: require('./splash_logo.png'),
 };
 export default imagePaths;

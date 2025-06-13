@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet } from 'react-native';
 import React, { FC } from 'react';
-import { Checkbox, Spacing } from '../../../component';
+import { AppText, Checkbox, Spacing } from '../../../component';
 import { Colors, SF, SH, SW } from '../../../utils';
 
 
@@ -34,7 +34,7 @@ const SubCategoryItem: FC<SubCategoryItemProps> = ({
                 label=""
             />
             <Spacing horizontal space={SW(8)} />
-            <Text style={styles.subcat}>{subcat.name}</Text>
+            <AppText style={styles.subcat}>{subcat.name}</AppText>
         </View>
     );
 };

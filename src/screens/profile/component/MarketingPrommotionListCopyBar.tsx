@@ -1,27 +1,28 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, } from 'react-native';
 import { Fonts, imagePaths, SH, SW, Colors, } from '../../../utils';
+import { AppText } from '../../../component';
 
 type MarketingPrommotionListCopyBarProps = {
     item?: any
 }
 export const CopyBar = () => {
     return <View style={styles.referralContainer}>
-        <Text style={styles.referralText}>
-            Referral Code: <Text style={styles.summaryBold}>SHARE50</Text>
-        </Text>
+        <AppText style={styles.referralText}>
+            Referral Code: <AppText style={styles.summaryBold}>SHARE50</AppText>
+        </AppText>
         <Image source={imagePaths.copy_icon} style={styles.copyIcon} />
     </View>
 }
 const MarketingPrommotionListCopyBar: React.FC<MarketingPrommotionListCopyBarProps> = ({ item }) => {
     return (
         <View style={styles.summaryCard}>
-            <Text style={styles.summaryText}>
-                Total Active Promotions: <Text style={styles.summaryBold}>3</Text>
-            </Text>
-            <Text style={styles.summaryText}>
-                Total Discount Given: <Text style={styles.summaryBold}>₹10,000</Text>
-            </Text>
+            <AppText style={styles.summaryText}>
+                Total Active Promotions: <AppText style={styles.summaryBold}>3</AppText>
+            </AppText>
+            <AppText style={styles.summaryText}>
+                Total Discount Given: <AppText style={styles.summaryBold}>₹10,000</AppText>
+            </AppText>
             <CopyBar />
         </View>
     );

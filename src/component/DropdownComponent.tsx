@@ -1,34 +1,39 @@
 import React, { FC, useState } from 'react';
-import { StyleSheet, View, Text, TextStyle, Image } from 'react-native';
+import { StyleSheet, View, Text, TextStyle, Image, ViewStyle } from 'react-native';
 import { Dropdown, } from 'react-native-element-dropdown';
-import { Colors, Fonts, imagePaths, SF, SH } from '../utils';
+import { Colors, Fonts, imagePaths, SF, SH, SW } from '../utils';
+import AppText from './AppText';
 
 interface DropdownComponentProps {
   data: any;
-  dropdownStyle?: any;
+  dropdown?: ViewStyle;
   placeholderStyle?: TextStyle;
   placeholderText?: string;
   renderRightIcon?: any;
+  isDisable?: boolean;
+  selectedvalue?: Object | null;
+  selectedTextStyle?: TextStyle
 }
 
-const DropdownComponent: FC<DropdownComponentProps> = ({ data, dropdownStyle = {}, placeholderStyle = {}, placeholderText = "Select value", renderRightIcon }) => {
+const DropdownComponent: FC<DropdownComponentProps> = ({ data, dropdown = {}, placeholderStyle = {}, selectedTextStyle = {}, placeholderText = "Select value", renderRightIcon, isDisable = false, selectedvalue = null }) => {
   const [value, setValue] = useState(null);
 
   const renderItem = (item: any) => {
     return (
       <View style={styles.item}>
-        <Text style={[styles.textItem]}>{item.label}</Text>
+        <AppText style={[styles.textItem]}>{item.label}</AppText>
       </View>
     );
   };
 
   return (
     <Dropdown
-      style={[styles.dropdown, dropdownStyle]}
+      style={[styles.dropdown, dropdown]}
       placeholderStyle={[styles.placeholderStyle, placeholderStyle]}
-      selectedTextStyle={styles.selectedTextStyle}
+      selectedTextStyle={[styles.selectedTextStyle, selectedTextStyle]}
       inputSearchStyle={styles.inputSearchStyle}
       iconStyle={styles.iconStyle}
+      containerStyle={styles.dropdownContainer}
       //@ts-ignore
       selectedTextStyle={placeholderStyle}
       iconColor={Colors.themeColor}
@@ -58,7 +63,7 @@ const styles = StyleSheet.create({
     height: SH(43),
     backgroundColor: 'white',
     borderRadius: 12,
-    padding: 12,
+    paddingHorizontal: 12,
     borderWidth: 1,
     borderColor: Colors.textAppColor,
     paddingLeft: SF(20),
@@ -97,4 +102,8 @@ const styles = StyleSheet.create({
     fontSize: SF(16),
     color: Colors.textAppColor
   },
+  dropdownContainer: {
+    borderRadius: SW(10),
+    marginTop: SH(6),
+  }
 });

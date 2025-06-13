@@ -23,6 +23,8 @@ export {default as Checkbox} from './Checkbox';
 export {default as SubHeading} from './SubHeading';
 export {default as ServiceItem} from './ServiceItem';
 export {default as BottomBar} from './BottomBar';
+export {default as ImagePickerModal} from './ImagePickerModal';
+export {default as AppText} from './AppText';
 
 export * from './ProfileComp'
 export * from './CustomToast'

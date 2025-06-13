@@ -15,6 +15,7 @@ import {
     I18nManager
 } from "react-native";
 import { Colors, Fonts, SF, SH, SW } from "../utils";
+import AppText from "./AppText";
 
 interface InputFieldProps extends TextInputProps {
     label?: string;
@@ -84,7 +85,7 @@ const InputField: React.FC<InputFieldProps> = ({
                 },
                 inputContainer: {
                     flexDirection: "row",
-                    alignItems:multiline?"flex-start": "center",
+                    alignItems: multiline ? "flex-start" : "center",
                     borderWidth: 1,
                     borderColor: color,
                     borderRadius: SF(10),
@@ -99,7 +100,7 @@ const InputField: React.FC<InputFieldProps> = ({
                     color: textColor,
                     fontSize: SF(14.5),
                     paddingLeft: SF(10),
-                    textAlign:I18nManager.isRTL ? 'right':'left',
+                    textAlign: I18nManager.isRTL ? 'right' : 'left',
                     fontFamily: Fonts.REGULAR,
                     ...inputStyle,
                 },
@@ -117,7 +118,7 @@ const InputField: React.FC<InputFieldProps> = ({
 
     return (
         <View style={styles.container}>
-            {label ? <Text style={styles.label}>{label}</Text> : null}
+            {label ? <AppText style={styles.label}>{label}</AppText> : null}
             <View style={styles.inputContainer}>
                 {leftIcon && <View style={{ paddingHorizontal: SF(2) }}>
                     <Image
@@ -127,6 +128,7 @@ const InputField: React.FC<InputFieldProps> = ({
                     />
                 </View>}
                 <TextInput
+                    allowFontScaling={false}
                     style={styles.input}
                     placeholder={placeholder}
                     placeholderTextColor={placeholderTextColor}
@@ -152,7 +154,7 @@ const InputField: React.FC<InputFieldProps> = ({
                     </TouchableOpacity>
                 )}
             </View>
-            {errorMessage ? <Text style={styles.errorText}>{errorMessage}</Text> : null}
+            {errorMessage ? <AppText style={styles.errorText}>{errorMessage}</AppText> : null}
         </View>
     );
 };

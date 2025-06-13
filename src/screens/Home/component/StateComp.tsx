@@ -4,6 +4,7 @@ import { Image, StyleSheet, Text, View } from "react-native";
 
 import imagePaths from "../../../assets/images";
 import { Colors, Fonts, SF, SH, SW } from "../../../utils";
+import { AppText } from "../../../component";
 
 interface StatItemProps {
     number: string;
@@ -14,10 +15,10 @@ interface StatItemProps {
 const StatItem: FC<StatItemProps> = ({ number, label, icon }) => (
     <View style={styles.statItem}>
         <View style={styles.statHeader}>
-            <Text style={styles.statNumber}>{number}</Text>
+            <AppText style={styles.statNumber}>{number}</AppText>
             <Image style={styles.icon} source={icon} />
         </View>
-        <Text style={styles.statLabel}>{label}</Text>
+        <AppText style={styles.statLabel}>{label}</AppText>
     </View>
 );
 

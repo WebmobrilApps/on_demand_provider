@@ -9,6 +9,7 @@ import {
     View,
 } from "react-native";
 import { Colors, Fonts, imagePaths, SF } from "../../../utils";
+import { AppText } from "../../../component";
 
 type LabelBarAvailProps = {
     day: string;
@@ -21,9 +22,9 @@ type LabelBarAvailProps = {
 function LabelBarAvail({ key, day, time, onClick, verticalSpace }: LabelBarAvailProps) {
     return (
         <TouchableOpacity key={key + 'avail_time'} onPress={onClick} style={[styles.container, { marginVertical: verticalSpace || 0 }]}>
-            <Text style={styles.dayText}>{day}</Text>
+            <AppText style={styles.dayText}>{day}</AppText>
             <View style={{ flexDirection: 'row', alignItems: 'center' ,width: '55%',justifyContent: 'space-between' }}>
-                <Text style={styles.timeText}>{time}</Text>
+                <AppText style={styles.timeText}>{time}</AppText>
                 <Image source={imagePaths.right_icon} style={styles.icon} />
             </View>
         </TouchableOpacity>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FlatList, StyleSheet, ScrollView, View, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { imagePaths, SF, SH, SW, Colors, Fonts } from '../../utils';
-import { AppHeader, ButtonComp, Buttons, Container, } from '../../component';
+import { AppHeader, AppText, ButtonComp, Buttons, Container, } from '../../component';
 import MarketingPrommotionListItem from './component/MarketingPrommotionListItem';
 import MarketingPrommotionListCopyBar from './component/MarketingPrommotionListCopyBar';
 import MarketingPrommotionModal from './component/MarketingPrommotionModal';
@@ -67,7 +67,7 @@ const MarketingPromotions: React.FC = () => {
             />
             <ScrollView contentContainerStyle={{ marginTop: SH(10) }} showsVerticalScrollIndicator={false}>
                 <MarketingPrommotionListCopyBar />
-                <Text style={{ marginVertical: SH(15), width: "90%", alignSelf: 'center', color: Colors.black, fontFamily: Fonts.MEDIUM }}>Active Promotions</Text>
+                <AppText style={{ marginVertical: SH(15), width: "90%", alignSelf: 'center', color: Colors.black, fontFamily: Fonts.MEDIUM }}>Active Promotions</AppText>
                 <FlatList
                     data={nearByData}
                     renderItem={({ item }: { item: any }) => (

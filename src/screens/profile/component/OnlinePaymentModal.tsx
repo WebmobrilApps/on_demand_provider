@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { SF, SH, SW, Colors, Fonts } from '../../../utils';
 import {
+  AppText,
   Buttons,
   Checkbox,
   InputField,
@@ -43,11 +44,11 @@ const OnlinePaymentModal = ({ visible = false, onClose }: any) => {
           </TouchableOpacity>
 
           <ScrollView contentContainerStyle={styles.listContainer}>
-            <Text style={styles.title}>Withdrawal Methods</Text>
+            <AppText style={styles.title}>Withdrawal Methods</AppText>
 
             {options.map((label, index) => (
               <View style={styles.optionWrapper} key={index}>
-                <Text style={styles.optionLabel}>{label}</Text>
+                <AppText style={styles.optionLabel}>{label}</AppText>
                 <Checkbox
                   checked={checkedItems === label}
                   size={SW(22)}
@@ -64,9 +65,9 @@ const OnlinePaymentModal = ({ visible = false, onClose }: any) => {
               value={amount}
             />
 
-            <Text style={styles.noteText}>
+            <AppText style={styles.noteText}>
               Withdrawals take 1-2 business days.
-            </Text>
+            </AppText>
 
             <Buttons
               buttonStyle={styles.withdrawButton}

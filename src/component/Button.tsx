@@ -10,6 +10,7 @@ import {
   View,
 } from "react-native";
 import { Fonts, SF, SH, SW, Colors, boxShadow, boxShadowlight } from "../utils";
+import AppText from "./AppText";
 
 type ButtonsProps = {
   title?: string;
@@ -23,6 +24,7 @@ type ButtonsProps = {
   linearGradientProps?: object;
   textColor?: string;
   isBorderd?: boolean;
+    isExtraBoxShadow?: boolean;
 };
 
 const Buttons: React.FC<ButtonsProps> = ({
@@ -36,7 +38,8 @@ const Buttons: React.FC<ButtonsProps> = ({
   spacedImages = false,
   linearGradientProps,
   textColor = "#ffffff",
-  isBorderd=false
+  isBorderd=false,
+   isExtraBoxShadow=true
 }) => {
   const styles = useMemo(
     () =>
@@ -78,7 +81,7 @@ const Buttons: React.FC<ButtonsProps> = ({
     <Pressable
       onPress={!disable && !isLoading ? onPress : undefined}
       style={({ pressed }) => [
-        styles.buttonStyle,boxShadowlight,
+        styles.buttonStyle,isExtraBoxShadow?boxShadow:boxShadowlight,
         buttonStyle,
         pressed && { opacity: 0.8 }, // Slight fade effect when pressed
         isBorderd && styles.borderedButtons
@@ -90,7 +93,7 @@ const Buttons: React.FC<ButtonsProps> = ({
       ) : (
         <View style={styles.buttonViewStyle}>
           {icon && <View style={styles.LeftImageViewStyle}>{icon}</View>}
-          <Text style={[styles.buttonTextStyle, buttonTextStyle]}>{title}</Text>
+          <AppText allowFontScaling={false} style={[styles.buttonTextStyle, buttonTextStyle]}>{title}</AppText>
         </View>
       )}
     </Pressable>

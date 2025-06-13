@@ -23,6 +23,7 @@ import {
 } from '../../utils';
 import {
   AppHeader,
+  AppText,
   AuthBottomContainer,
   AuthImgComp,
   Container,
@@ -80,10 +81,10 @@ const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ }) => {
                 html: `${data}`
               }}
             /> :
-            <Text style={{ fontFamily: Fonts.REGULAR, lineHeight: SH(20), color: Colors.textAppColor }}>Something went wrong</Text>
+            <AppText style={{ fontFamily: Fonts.REGULAR, lineHeight: SH(20), color: Colors.textAppColor }}>Something went wrong</AppText>
         }
         {
-          error  && <Text style={{ fontFamily: Fonts.REGULAR, lineHeight: SH(20), color: Colors.textAppColor }}>Something went wrong</Text>
+          error  && <AppText style={{ fontFamily: Fonts.REGULAR, lineHeight: SH(20), color: Colors.textAppColor }}>Something went wrong</AppText>
         }
        
       </ScrollView>

@@ -7,7 +7,7 @@ import {
 import React from 'react';
 import { Source } from 'react-native-fast-image';
 import { boxShadowlight, Colors, Fonts, SF, SH, SW } from '../../../utils';
-import { ImageLoader } from '../../../component';
+import { AppText, ImageLoader } from '../../../component';
 
 interface HomeRecommendedItemsProps {
   name: string;
@@ -23,10 +23,10 @@ const HomeRecommendedItems: React.FC<HomeRecommendedItemsProps> = ({
       <View style={[styles.imageContainer,boxShadowlight]}>
         <ImageLoader source={image} resizeMode="cover" mainImageStyle={styles.imageLoader} />
       </View>
-      <Text style={styles.text}>{'Service Name'}</Text>
+      <AppText style={styles.text}>{'Service Name'}</AppText>
       <View style={styles.ratingContainer}>
         {/* <Image source={imagePaths.star_filled} resizeMode="contain" style={styles.verifiedIcon} /> */}
-        {/* <Text style={styles.ratingtext}>{'4.5'}</Text> */}
+        {/* <AppText style={styles.ratingtext}>{'4.5'}</AppText> */}
       </View>
     </View>
   );

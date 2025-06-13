@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, TextStyle } from 'react-native';
 
-import { VectoreIcons } from '.';
+import { AppText, VectoreIcons } from '.';
 import { Colors, SF, SW } from '../utils';
 
 interface CheckboxProps {
@@ -24,11 +24,10 @@ const Checkbox: React.FC<CheckboxProps> = ({
   labelStyle = {},
 }) => {
   return (
-    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-      <TouchableOpacity
-        onPress={() => onChange(!checked)}
+    <TouchableOpacity activeOpacity={0.8} onPress={() => onChange(!checked)} style={{ flexDirection: 'row', alignItems: 'center' }}>
+      <View
         style={[styles.container, { height: size, width: size, borderColor: color, borderRadius: 4, backgroundColor: checked ? Colors.themeColor : Colors.white }, styles.checkbox]}
-        activeOpacity={0.8}
+
       >
         {checked && <VectoreIcons
           icon='Feather'
@@ -36,9 +35,9 @@ const Checkbox: React.FC<CheckboxProps> = ({
           color={Colors.bgwhite}
           name={'check'}
         />}
-      </TouchableOpacity>
-      {label && <Text style={[styles.label, labelStyle]}>{label}</Text>}
-    </View>
+      </View>
+      {label && <AppText style={[styles.label, labelStyle]}>{label}</AppText>}
+    </TouchableOpacity>
   );
 };
 

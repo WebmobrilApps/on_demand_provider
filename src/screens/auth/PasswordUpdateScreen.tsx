@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { Keyboard, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Colors, Fonts, regex, SF, SH, SW } from '../../utils';
 import {
+  AppText,
   AuthBottomContainer,
   AuthImgComp,
   Container,
-  CustomToast,
+  // CustomToast,
   InputField,
   InputIcons,
   Spacing,
@@ -46,8 +47,8 @@ const PasswordUpdateScreen: React.FC<PasswordUpdateProps> = ({ }) => {
   const [resetPassword, { isLoading }] = useResetPasswordMutation()
 
   const btnUpdatePassword = async (values: { password: string; cpassword: string }, resetForm: any) => {
-    // navigation.navigate(RouteName.LOGIN);
-
+    navigation.navigate(RouteName.LOGIN);
+    return false
     let data = {
       data: {
         password: values.password,
@@ -59,11 +60,11 @@ const PasswordUpdateScreen: React.FC<PasswordUpdateProps> = ({ }) => {
       const response = await resetPassword(data).unwrap();
       console.log('btnUpdatePassword res--', response);
       if (response.succeeded) {
-        CustomToast({ message: 'Info', description: response.ResponseMessage, position: 'top', type: 'success', });
+        // CustomToast({ message: 'Info', description: response.ResponseMessage, position: 'top', type: 'success', });
         navigation.navigate(RouteName.LOGIN);
       } else {
         let mess = response?.ResponseMessage || response.error?.ResponseMessage || 'Something went wrong. Please try again.';
-        CustomToast({ message: 'Error', description: mess, position: 'top', type: 'danger', });
+        // CustomToast({ message: 'Error', description: mess, position: 'top', type: 'danger', });
       }
     } catch (error) {
       console.error('Login Failed:', error);
@@ -86,7 +87,7 @@ const PasswordUpdateScreen: React.FC<PasswordUpdateProps> = ({ }) => {
         <AuthImgComp icon={imagePaths.pass_update_img} />
         <AuthBottomContainer>
           <Formik
-            initialValues={{ password: 'Qwerty@1', cpassword: 'Qwerty@1' }}
+            initialValues={{ password: '', cpassword: '' }}
             validationSchema={validationSchema}
             onSubmit={(values, { resetForm }) => {
               btnUpdatePassword(values, resetForm);
@@ -102,10 +103,10 @@ const PasswordUpdateScreen: React.FC<PasswordUpdateProps> = ({ }) => {
             }) => (
               <View style={styles.bottomInnerContainer}>
                 <View>
-                  <Text style={styles.heading}>{t('updatepass.title')}</Text>
-                  <Text style={styles.subtitile}>
+                  <AppText style={styles.heading}>{t('updatepass.title')}</AppText>
+                  <AppText style={styles.subtitile}>
                     {t('updatepass.subtitle')}
-                  </Text>
+                  </AppText>
                   <InputField
                     placeholder={t('placeholders.password')}
                     value={values.password}

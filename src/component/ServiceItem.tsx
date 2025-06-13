@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, Image, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
 import { Colors, SH, SW, Fonts, SF, boxShadowlight } from '../utils';
 import imagePaths from '../assets/images';
-import { VectoreIcons } from '../component';
+import { AppText, VectoreIcons } from '../component';
 import { useNavigation } from '@react-navigation/native';
 import RouteName from '../navigation/RouteName';
 
@@ -43,14 +43,14 @@ const ServiceItem: React.FC<ServiceItemProps> = ({ image, name, withEditButton =
                 <Image source={image} style={styles.image} resizeMode="cover" />
             </View>
             <View style={styles.textContainer}>
-                <Text style={styles.name}>{name}</Text>
-                <Text style={styles.nearbyadd}>Chestnut StreetRome, NY</Text>
-                <Text style={styles.servicePrice}>
+                <AppText style={styles.name}>{name}</AppText>
+                <AppText style={styles.nearbyadd}>Chestnut StreetRome, NY</AppText>
+                <AppText style={styles.servicePrice}>
                     $80{' '}
-                    <Text style={styles.perHourText}>
+                    <AppText style={styles.perHourText}>
                         Per hr.
-                    </Text>
-                </Text>
+                    </AppText>
+                </AppText>
             </View>
         </TouchableOpacity>
     );

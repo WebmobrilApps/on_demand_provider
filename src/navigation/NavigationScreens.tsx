@@ -48,7 +48,8 @@ import {
   ShareProfile,
   PaymentScreen,
   AddOtherPersonDetail,
-  CustomerSupport
+  CustomerSupport,
+  SubscriptionManage
 } from '../screens';
 
 import AllUsersList from '../screens/AllUsersList';
@@ -116,6 +117,7 @@ export const NavigatinScreens = () => {
         <Stack.Screen name={RouteName.PAYMENT_SCREEN} component={PaymentScreen} />
         <Stack.Screen name={RouteName.ADD_OTHER_PERSON_DETAIL} component={AddOtherPersonDetail} />
         <Stack.Screen name={RouteName.CUSTOMER_SUPPORT} component={CustomerSupport} />
+        <Stack.Screen name={RouteName.SUBSCRIPTION_MANAGE} component={SubscriptionManage} />
       </Stack.Navigator>
     </NavigationContainer>
   );

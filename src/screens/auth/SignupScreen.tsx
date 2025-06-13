@@ -22,6 +22,7 @@ import {
   validationMSG,
 } from '../../utils';
 import {
+  AppText,
   AuthBottomContainer,
   AuthImgComp,
   Container,
@@ -44,7 +45,7 @@ import { ChatContext } from '../ChatProvider';
 import { useDispatch } from 'react-redux';
 import { StorageProvider, useLoginMutation, useRegisterMutation } from '../../services';
 import DeviceInfo from 'react-native-device-info';
-const SCREEN_WIDTH =  Dimensions.get('window').width
+const SCREEN_WIDTH = Dimensions.get('window').width
 const SocialButton = ({
   icon,
   onPress,
@@ -104,7 +105,7 @@ const SignupScreen: React.FC<SignupProps> = ({ }) => {
 
 
   const btnSignup = async (
-    
+
     values: { email: string; password: string; cpassword: string; fname: string; mobileno: string; },
     resetForm: any,
   ) => {
@@ -175,11 +176,16 @@ const SignupScreen: React.FC<SignupProps> = ({ }) => {
           <View style={{ paddingVertical: SH(35), paddingHorizontal: SW(20) }}>
             <Formik
               initialValues={{
-                email: 'jacks@mailinator.com',
-                password: 'Qwerty@123',
-                cpassword: 'Qwerty@123',
-                fname: 'jacks',
-                mobileno: '881704',
+                // email: 'jacks@mailinator.com',
+                // password: 'Qwerty@123',
+                // cpassword: 'Qwerty@123',
+                // fname: 'jacks',
+                // mobileno: '881704',
+                email: '',
+                password: '',
+                cpassword: '',
+                fname: '',
+                mobileno: '',
               }}
               validationSchema={validationSchema}
               onSubmit={(values, { resetForm }) => {
@@ -301,9 +307,9 @@ const SignupScreen: React.FC<SignupProps> = ({ }) => {
                           />
                       }
                     </Pressable>
-                    <Text style={styles.consfirmTxt}>
+                    <AppText style={styles.consfirmTxt}>
                       By signing up you accept the{' '}
-                      <Text
+                      <AppText
                         onPress={() => {
                           navigation.navigate(RouteName.PRIVACY_POLICY, {
                             title: 'Terms of Service',
@@ -311,9 +317,9 @@ const SignupScreen: React.FC<SignupProps> = ({ }) => {
                         }}
                         style={{ textDecorationLine: 'underline' }}>
                         Terms of Service
-                      </Text>{' '}
+                      </AppText>{' '}
                       & {'\n'}
-                      <Text
+                      <AppText
                         onPress={() => {
                           navigation.navigate(RouteName.PRIVACY_POLICY, {
                             title: 'Privacy Policy',
@@ -321,8 +327,8 @@ const SignupScreen: React.FC<SignupProps> = ({ }) => {
                         }}
                         style={{ textDecorationLine: 'underline' }}>
                         Privacy Policy
-                      </Text>
-                    </Text>
+                      </AppText>
+                    </AppText>
                   </View>
 
                   <Spacing space={SH(30)} />
@@ -342,7 +348,7 @@ const SignupScreen: React.FC<SignupProps> = ({ }) => {
 
                   <View style={styles.lineViewContainer}>
                     <View style={styles.leftRightLine} />
-                    <Text style={styles.ortext}>{t('signup.orText')}</Text>
+                    <AppText style={styles.ortext}>{t('signup.orText')}</AppText>
                     <View style={styles.leftRightLine} />
                   </View>
 
@@ -362,16 +368,16 @@ const SignupScreen: React.FC<SignupProps> = ({ }) => {
 
                   <Spacing space={SH(25)} />
 
-                  <Text style={styles.dontHaveAccTxt}>
+                  <AppText style={styles.dontHaveAccTxt}>
                     {t('signup.alreadyHaveAccount')}{' '}
-                    <Text
+                    <AppText
                       onPress={() => {
                         navigation.navigate(RouteName.LOGIN);
                       }}
                       style={{ fontFamily: Fonts.BOLD, fontSize: SF(16) }}>
                       {t('signup.logIn')}{' '}
-                    </Text>
-                  </Text>
+                    </AppText>
+                  </AppText>
                 </>
               )}
             </Formik>

@@ -4,6 +4,7 @@ import {boxShadowlight, Colors, Fonts, SF, SH, SW} from '../../utils';
 import imagePaths from '../../assets/images';
 import ImageLoader from '../ImageLoader';
 import StarRating from 'react-native-star-rating-widget';
+import AppText from '../AppText';
 
 type PaymentHistoryItemProps = {
   item: {
@@ -27,8 +28,8 @@ const PaymentHistoryItem: React.FC<PaymentHistoryItemProps> = ({item}) => {
           />
         </View>
         <View style={styles.itemDetails}>
-          <Text style={styles.text}>{item.name}</Text>
-          <Text style={styles.textprice}>{item.price}</Text>
+          <AppText style={styles.text}>{item.name}</AppText>
+          <AppText style={styles.textprice}>{item.price}</AppText>
         </View>
       </View>
       <View style={styles.reviewContainer}>
@@ -40,15 +41,15 @@ const PaymentHistoryItem: React.FC<PaymentHistoryItemProps> = ({item}) => {
               starSize={SF(18)}
               rating={3.5}
             />
-            <Text style={styles.ratingtxt}>{'4.6'}</Text>
+            <AppText style={styles.ratingtxt}>{'4.6'}</AppText>
           </View>
-          <Text style={styles.reviewDate}>25 Jan</Text>
+          <AppText style={styles.reviewDate}>25 Jan</AppText>
         </View>
-        <Text style={styles.reviewText}>
+        <AppText style={styles.reviewText}>
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry's standard dummy text ever
           since the 1500s
-        </Text>
+        </AppText>
       </View>
     </TouchableOpacity>
   );

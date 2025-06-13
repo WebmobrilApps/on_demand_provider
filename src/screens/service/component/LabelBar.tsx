@@ -9,6 +9,7 @@ import {
     Platform,
 } from "react-native";
 import { Colors, SF } from "../../../utils";
+import { AppText } from "../../../component";
 
 type labelBarProps = {
     label: string;
@@ -19,7 +20,7 @@ type labelBarProps = {
 function LabelBar({ label, icon, onClick }: labelBarProps) {
     return (
         <TouchableOpacity onPress={onClick} style={styles.container}>
-            <Text style={styles.labelText}>{label}</Text>
+            <AppText style={styles.labelText}>{label}</AppText>
             <Image source={icon} style={styles.icon} />
         </TouchableOpacity>
     );

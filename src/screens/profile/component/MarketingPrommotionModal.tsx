@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, Image, StyleSheet, Modal, TouchableWithoutFeedback, TouchableOpacity, Share, } from 'react-native';
 import { Fonts, imagePaths, SH, SW, Colors, } from '../../../utils';
 import { CopyBar } from './MarketingPrommotionListCopyBar';
-import { Buttons } from '../../../component';
+import { AppText, Buttons } from '../../../component';
 
 type MarketingPrommotionModalProps = {
     code?: string;
@@ -40,8 +40,8 @@ const MarketingPrommotionModal: React.FC<MarketingPrommotionModalProps> = ({ vis
             onRequestClose={() => { closeModal() }}>
             <TouchableOpacity activeOpacity={1} onPress={() => { closeModal() }} style={styles.container}>
                 <TouchableOpacity activeOpacity={1} style={styles.subContainer}>
-                    <Text style={styles.text1}>Invite Friends</Text>
-                    <Text style={styles.text2}>Earn unlimited FREE credits! Your friends get {'\n'} $5 when they sign up with your invite code. {'\n'}You earn $5 after their first purchase</Text>
+                    <AppText style={styles.text1}>Invite Friends</AppText>
+                    <AppText style={styles.text2}>Earn unlimited FREE credits! Your friends get {'\n'} $5 when they sign up with your invite code. {'\n'}You earn $5 after their first purchase</AppText>
                     <CopyBar />
                     <Buttons
                         title="Share"

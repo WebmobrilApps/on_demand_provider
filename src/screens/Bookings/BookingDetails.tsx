@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { Colors, SH, SW, Fonts, SF } from '../../utils';
-import { AppHeader, Buttons, Container, Spacing, UserprofileView, VectoreIcons } from '../../component';
+import { AppHeader, AppText, Buttons, Container, Spacing, UserprofileView, VectoreIcons } from '../../component';
 import { useNavigation } from '@react-navigation/native';
 import { ChangeServiceProfiderConfirmModal, ChangeServiceProvider, RescheduleBooking, SucessBookingModal, } from './component';
 
@@ -22,8 +22,8 @@ interface ActionButtonProps {
 // Common component for info rows (Service, Date & Time, Address)
 const InfoRow: React.FC<InfoRowProps> = ({ label, value }) => (
   <View style={styles.infoRow}>
-    <Text style={styles.label}>{label}</Text>
-    <Text style={styles.value}>{value}</Text>
+    <AppText style={styles.label}>{label}</AppText>
+    <AppText style={styles.value}>{value}</AppText>
   </View>
 );
 
@@ -57,7 +57,7 @@ const BookingDetails: React.FC = () => {
       <ScrollView style={styles.scrollView} bounces={false}>
         <TouchableOpacity onPress={() => setIsServiceProvConfirmModal(true)} style={styles.headerRow}>
           <UserprofileView height={SF(72)} width={SF(72)} />
-          <Text style={styles.userName}>Ashutosh Pandey</Text>
+          <AppText style={styles.userName}>Ashutosh Pandey</AppText>
           <View style={styles.bookingActions}>
             <Buttons
               icon={<VectoreIcons name="phone" icon="FontAwesome" size={SF(12)} color={Colors.themeColor} />}
@@ -73,7 +73,7 @@ const BookingDetails: React.FC = () => {
             />
           </View>
         </TouchableOpacity>
-        <Text style={styles.bookingId}>#210</Text>
+        <AppText style={styles.bookingId}>#210</AppText>
         <Spacing space={SH(10)} />
         <InfoRow label="Service :" value="House Cleaning" />
         <InfoRow label="Date & Time :" value="02 Febuary, 2022 at 8:30 AM" />

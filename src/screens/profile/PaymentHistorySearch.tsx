@@ -8,7 +8,7 @@ import {
   VictoryAxis,
 } from 'victory-native';
 import { Colors, Fonts, SF, SH, SW } from '../../utils';
-import { AppHeader, Buttons, DropdownComponent, PaymentHistoryItem, Spacing, VectoreIcons } from '../../component';
+import { AppHeader, Buttons, Container, DropdownComponent, PaymentHistoryItem, Spacing, VectoreIcons } from '../../component';
 import { useNavigation } from '@react-navigation/native';
 import RouteName from '../../navigation/RouteName';
 
@@ -27,7 +27,7 @@ const PaymentHistorySearch: React.FC = () => {
   const daysArray = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
   return (
-    <View style={styles.container}>
+    <Container style={styles.container}>
       <AppHeader
         headerTitle="Search Transaction"
         onPress={() => navigation.goBack()}
@@ -50,10 +50,11 @@ const PaymentHistorySearch: React.FC = () => {
         borderRadius: 5,
         marginTop: SH(10),
         marginBottom: SH(20),
- 
+
 
       }}>
         <TextInput
+          allowFontScaling={false}
           style={[{
             fontSize: SF(14),
             height: SH(40),
@@ -74,13 +75,13 @@ const PaymentHistorySearch: React.FC = () => {
         contentContainerStyle={styles.flatListContent}
         data={paymentData}
         ItemSeparatorComponent={() => <View style={styles.separator} />}
-        renderItem={({ item }) => <PaymentHistoryItem item={item} onClick={()=>{navigation.navigate(RouteName.PAY_INVOICE)}} />}
+        renderItem={({ item }) => <PaymentHistoryItem item={item} onClick={() => { navigation.navigate(RouteName.PAY_INVOICE) }} />}
         keyExtractor={(item, index) => item.name + index}
         removeClippedSubviews={false}
       />
 
 
-    </View>
+    </Container>
   );
 };
 

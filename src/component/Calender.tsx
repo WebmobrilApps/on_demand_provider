@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { Fonts, SF } from '../utils';
 import VectorIcon from './VectoreIcons';
+import AppText from './AppText';
 
 const WEEK_DAYS = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
 const MONTH_LABELS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -139,14 +140,14 @@ const Calendar: React.FC<CalendarProps> = ({
         onPress={() => setShowMonthPicker(true)}
         style={styles.monthSelector}
       >
-        <Text style={styles.monthText}>
+        <AppText style={styles.monthText}>
           {MONTH_LABELS[selectedMonth]} {selectedYear}{"   "} 
           <VectorIcon
             icon='FontAwesome'
             name='caret-down'
             size={SF(22)}
           />
-        </Text>
+        </AppText>
       </TouchableOpacity>
 
       <Modal visible={showMonthPicker} transparent animationType="fade">
@@ -156,7 +157,7 @@ const Calendar: React.FC<CalendarProps> = ({
               data={monthOptions}
               renderItem={({ item }) => (
                 <TouchableOpacity onPress={() => handleMonthSelect(item)}>
-                  <Text style={styles.modalMonth}>{item.label}</Text>
+                  <AppText style={styles.modalMonth}>{item.label}</AppText>
                 </TouchableOpacity>
               )}
               keyExtractor={(item) => `${item.month}-${item.year}`}
@@ -169,7 +170,7 @@ const Calendar: React.FC<CalendarProps> = ({
       <View style={styles.daysContainer}>
         {WEEK_DAYS.map((day, index) => (
           <View key={`week-${index}`} style={styles.dayBox}>
-            <Text
+            <AppText
               style={[
                 styles.weekDayText,
                 index === 5 && { color: '#378CA4' },
@@ -177,7 +178,7 @@ const Calendar: React.FC<CalendarProps> = ({
               ]}
             >
               {day}
-            </Text>
+            </AppText>
           </View>
         ))}
 
@@ -196,7 +197,7 @@ const Calendar: React.FC<CalendarProps> = ({
                 isSelected && styles.selectedDayBox,
               ]}
             >
-              <Text
+              <AppText
                 style={[
                   styles.dayText,
                   {
@@ -206,7 +207,7 @@ const Calendar: React.FC<CalendarProps> = ({
                 ]}
               >
                 {day}
-              </Text>
+              </AppText>
             </TouchableOpacity>
           );
         })}

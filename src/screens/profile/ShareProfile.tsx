@@ -1,6 +1,6 @@
 import React from 'react';
 import { Image, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import { AppHeader, Container, VectoreIcons } from '../../component';
+import { AppHeader, AppText, Container, VectoreIcons } from '../../component';
 import { Colors, Fonts, imagePaths, SF, SW } from '../../utils';
 import { useNavigation } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
@@ -24,7 +24,7 @@ const ShareProfile: React.FC = () => {
 
       <View style={styles.content}>
         <View style={styles.qrCard}>
-          <Text style={styles.qrTitle}>Profile QR</Text>
+          <AppText style={styles.qrTitle}>Profile QR</AppText>
 
           <QRCode value={appUrl} size={170} color="black" backgroundColor="white" />
 
@@ -93,7 +93,7 @@ const RowItem = ({
   iconSize?: number;
 }) => (
   <View style={[styles.rowItem, { backgroundColor, justifyContent: centerText ? 'center' : 'space-between' }]}>
-    <Text style={styles.rowItemText}>{text}</Text>
+    <AppText style={styles.rowItemText}>{text}</AppText>
     {!centerText && icon && (
       <Image
         source={icon}

@@ -8,4 +8,5 @@ export * from './hooks'
 export * from './type'
 export * from './StaticData'
 export * from './commonStyle'
+export * from './tool'
 export {default as imagePaths} from '../assets/images';

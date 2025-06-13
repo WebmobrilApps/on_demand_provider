@@ -8,7 +8,7 @@ import {
   SafeAreaView,
   ScrollView,
 } from 'react-native';
-import { AppHeader, Buttons } from '../../component';
+import { AppHeader, AppText, Buttons } from '../../component';
 import { Colors, Fonts, SF } from '../../utils';
 
 const PaymentInvoice = () => {
@@ -16,52 +16,52 @@ const PaymentInvoice = () => {
     <any>();
   return (
     <SafeAreaView style={styles.safeArea}>
+      {/* Header */}
+      <AppHeader
+        headerTitle="Invoice"
+        onPress={() => navigation.goBack()}
+        Iconname="arrowleft"
+        rightOnPress={() => { }}
+        headerStyle={styles.header}
+      />
       <ScrollView contentContainerStyle={styles.container}>
-        {/* Header */}
-        <AppHeader
-          headerTitle="Invoice"
-          onPress={() => navigation.goBack()}
-          Iconname="arrowleft"
-          rightOnPress={() => { }}
-          headerStyle={styles.header}
-        />
 
         {/* Invoice Info */}
         <View style={styles.section}>
-          <Text style={styles.label}>
-            <Text style={styles.labelHighlight}>Invoice To: </Text>
+          <AppText style={styles.label}>
+            <AppText style={styles.labelHighlight}>Invoice To: </AppText>
             Customer Name
-          </Text>
-          <Text style={styles.label}>
-            <Text style={styles.labelHighlight}>Email Id: </Text>
+          </AppText>
+          <AppText style={styles.label}>
+            <AppText style={styles.labelHighlight}>Email Id: </AppText>
             example@gmail.com
-          </Text>
-          <Text style={styles.label}>
-            <Text style={styles.labelHighlight}>Invoice Date: </Text>
+          </AppText>
+          <AppText style={styles.label}>
+            <AppText style={styles.labelHighlight}>Invoice Date: </AppText>
             01/02/2025
-          </Text>
+          </AppText>
         </View>
 
         {/* Service Details */}
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Service Details:</Text>
+          <AppText style={styles.sectionTitle}>Service Details:</AppText>
 
-          <Text style={styles.label}>
-            <Text style={styles.labelHighlight}>Service Name: </Text>
+          <AppText style={styles.label}>
+            <AppText style={styles.labelHighlight}>Service Name: </AppText>
             Home Cleaning
-          </Text>
-          <Text style={styles.label}>
-            <Text style={styles.labelHighlight}>Price: </Text>
+          </AppText>
+          <AppText style={styles.label}>
+            <AppText style={styles.labelHighlight}>Price: </AppText>
             ₹1,500
-          </Text>
-          <Text style={styles.label}>
-            <Text style={styles.labelHighlight}>Tax (if applicable): </Text>
+          </AppText>
+          <AppText style={styles.label}>
+            <AppText style={styles.labelHighlight}>Tax (if applicable): </AppText>
             ₹150
-          </Text>
-          <Text style={styles.label}>
-            <Text style={styles.labelHighlight}>Total: </Text>
+          </AppText>
+          <AppText style={styles.label}>
+            <AppText style={styles.labelHighlight}>Total: </AppText>
             ₹1,650
-          </Text>
+          </AppText>
         </View>
 
       </ScrollView>
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 20,
+    paddingHorizontal: 30,
   },
   headerTitle: {
     fontSize: 18,
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
   },
   labelHighlight: {
     color: Colors.themeColor,
-    fontFamily:Fonts.SEMI_BOLD,
+    fontFamily: Fonts.SEMI_BOLD,
   },
   downloadButton: {
     marginBottom: 40,
@@ -120,5 +120,5 @@ const styles = StyleSheet.create({
     elevation: 3,
     width: '90%',
   },
- 
+
 });

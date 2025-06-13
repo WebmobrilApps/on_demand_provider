@@ -3,7 +3,7 @@ import { Pressable, StyleSheet, Text, View, Keyboard } from 'react-native';
 import { Colors, Fonts, SF, SH, SW, boxShadow, commonStyles } from '../../utils';
 import { useNavigation } from '@react-navigation/native';
 import RouteName from '../../navigation/RouteName';
-import { Buttons, ImageLoader } from '..';
+import { AppText, Buttons, ImageLoader } from '..';
 
 type Props = {
   item: any;
@@ -22,15 +22,15 @@ const AppointmentItem: React.FC<Props> = ({ item }) => {
           <ImageLoader source={{ uri: item.image }} resizeMode="cover" mainImageStyle={styles.logo} />
         </View>
         <View style={styles.infoContainer}>
-          <Text style={styles.text}>
+          <AppText style={styles.text}>
             Haircut + Beard{' '}
-            <Text style={styles.subText}>With Juana</Text>
-          </Text>
-          <Text style={styles.dateTime}>{`06-March-2025 \n8:00 am - 8:30 am`}</Text>
-          <Text style={styles.dateTime}>WM Barbershop</Text>
-          <Text style={styles.dateTime}>1893 Cheshire Bridge Rd Ne, 30325</Text>
+            <AppText style={styles.subText}>With Juana</AppText>
+          </AppText>
+          <AppText style={styles.dateTime}>{`06-March-2025 \n8:00 am - 8:30 am`}</AppText>
+          <AppText style={styles.dateTime}>WM Barbershop</AppText>
+          <AppText style={styles.dateTime}>1893 Cheshire Bridge Rd Ne, 30325</AppText>
           <View style={styles.footer}>
-            <Text style={styles.price}>$1893</Text>
+            <AppText  allowFontScaling={false} style={styles.price}>$1893</AppText>
             <Buttons
               buttonStyle={styles.bookAgain}
               textColor={Colors.textWhite}

@@ -1,4 +1,4 @@
- 
+
 import React, { useState } from "react";
 import { View, StyleProp, ViewStyle } from "react-native";
 import FastImage, { Source, ResizeMode, ImageStyle } from "react-native-fast-image";

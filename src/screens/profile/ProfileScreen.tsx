@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FlatList, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { AppHeader, BottomBar, Container, ImageLoader, LogoutPopup, ProfileList } from '../../component';
+import { AppHeader, AppText, BottomBar, Container, ImageLoader, LogoutPopup, ProfileList } from '../../component';
 import { Colors, Fonts, SF, SH, SW, useDisableGestures } from '../../utils';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import imagePaths from '../../assets/images';
@@ -49,18 +49,18 @@ const ProfileScreen: React.FC<ProfileProps> = ({ }) => {
       },
     },
 
-    {
-      name: t('profile.myCalendar'),
-      id: 3,
-      onClick: () => {
-        navigation.navigate(RouteName.MY_CALENDER);
-      },
-    },
+    // {
+    //   name: t('profile.myCalendar'),
+    //   id: 3,
+    //   onClick: () => {
+    //     navigation.navigate(RouteName.MY_CALENDER);
+    //   },
+    // },
     {
       name: 'Subscription',
       id: 33,
       onClick: () => {
-        // navigation.navigate(RouteName.MY_CALENDER);
+        navigation.navigate(RouteName.SUBSCRIPTION_MANAGE);
       },
     },
     {
@@ -100,7 +100,7 @@ const ProfileScreen: React.FC<ProfileProps> = ({ }) => {
         navigation.navigate(RouteName.NOTIFICATION_ALERT);
       },
     },
-       { name: t('profile.customerSupport'), id: 9, onClick: () => { navigation.navigate(RouteName.CUSTOMER_SUPPORT); } },
+    { name: t('profile.customerSupport'), id: 9, onClick: () => { navigation.navigate(RouteName.CUSTOMER_SUPPORT); } },
     { name: t('profile.logout'), id: 10, onClick: () => { setLogoutPopup(true) } },
   ];
 
@@ -125,8 +125,8 @@ const ProfileScreen: React.FC<ProfileProps> = ({ }) => {
             />
           </View>
           <View style={styles.userDetailsContainer}>
-            <Text style={styles.userName}>John Kevin</Text>
-            <Text style={styles.userPhone}>+91 1234567890</Text>
+            <AppText style={styles.userName}>John Kevin</AppText>
+            <AppText style={styles.userPhone}>+91 1234567890</AppText>
           </View>
           <ImageLoader
             source={imagePaths.edit_profile}
@@ -193,6 +193,7 @@ const styles = StyleSheet.create({
   },
   userDetailsContainer: {
     width: '48%',
+    paddingLeft: 5
   },
   userName: {
     fontFamily: Fonts.MEDIUM,
