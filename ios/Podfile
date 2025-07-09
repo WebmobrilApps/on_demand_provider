@@ -15,15 +15,22 @@ if linkage != nil
 end
 
 target 'SsnapPro' do
+  use_frameworks! :linkage => :static
   config = use_native_modules!
-
+  use_frameworks!
+  # Your Firebase pods
+  pod 'FirebaseCoreInternal'
+  pod 'FirebaseDatabase'
+  # Other pods as needed
   use_react_native!(
     :path => config[:reactNativePath],
+    :hermes_enabled => true,
     # An absolute path to your application root.
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
-  post_install do |installer|
+
+post_install do |installer|
     # https://github.com/facebook/react-native/blob/main/packages/react-native/scripts/react_native_pods.rb#L197-L202
     react_native_post_install(
       installer,

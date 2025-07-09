@@ -1,0 +1,16 @@
+export {default as ProfileSetup} from './ProfileSetup';
+export {default as ChangePassword} from './ChangePassword';
+export {default as MyCalender} from './MyCalender';
+export {default as PaymentHistory} from './PaymentHistory';
+export {default as RatingRiview} from './RatingRiview';
+export {default as ProfileScreen} from './ProfileScreen';
+export {default as NotificationAndAlert} from './NotificationAndAlert';
+export {default as LanguageAndCurrency} from './LanguageAndCurrency';
+export {default as OnsitePayment} from './OnsitePayment';
+export {default as MarketingPromotions} from './MarketingPromotions';
+export {default as PaymentHistoryGraph} from './PaymentHistoryGraph';
+export {default as PaymentHistorySearch} from './PaymentHistorySearch';
+export {default as PaymentInvoice} from './PaymentInvoice';
+export {default as ShareProfile} from './ShareProfile';
+export {default as CustomerSupport} from './CustomerSupport';
+export {default as SubscriptionManage} from './SubscriptionManage';

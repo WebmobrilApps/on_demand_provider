@@ -1,4 +1,4 @@
-package com.ssnappro
+package com.ssnapservicespro.app
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate

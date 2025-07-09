@@ -1,4 +1,4 @@
-package com.ssnappro
+package com.ssnapservicespro.app
 
 import android.app.Application
 import com.facebook.react.PackageList
